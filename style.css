@@ -35,6 +35,10 @@ hr.separator {
     border: 1px solid rgba(0, 0, 0, 0.025);
 }
 
+svg {
+    display: block;
+}
+
 a {
     text-decoration: none;
     margin-top: 40px;
@@ -98,6 +102,10 @@ a.link-code:hover {
 
 #svg-experiment {
     margin-top: 40px;
+    border-style: dotted;
+    border-width: 1px;
+    border-color: lightgray;
+    display: block;
 }
 
 .comment {
