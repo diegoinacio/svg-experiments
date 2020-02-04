@@ -100,6 +100,10 @@ a.link-code:hover {
     margin-top: 40px;
 }
 
+.comment {
+    color: gray;
+}
+
 /* * GitHub Corner */
 
 .github-corner svg {
