@@ -1,9 +1,14 @@
+// SVG namespace
+let _SVG_NS = 'http://www.w3.org/2000/svg';
+
 let DIV = document.getElementById("svg-experiment");
-let SVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+let SVG = document.createElementNS(_SVG_NS, 'svg');
 
 const WIDTH = 800;
 const HEIGHT = 450;
 
+SVG.setAttribute('version', '1.1');
+SVG.setAttribute('xmlns', _SVG_NS);
 SVG.setAttribute("width", WIDTH);
 SVG.setAttribute("height", HEIGHT);
 
@@ -35,6 +40,7 @@ function randomColor() {
 }
 
 
+// Parameters
 let phi = 0;           // Current angle
 let phi_a = 0;         // Current angle (absolute value)
 let theta = 0;         // Incremental angle
@@ -45,7 +51,7 @@ let radius = 800;      // Initial radius
 // Define new squares based on the idea of squares inscribed in another square
 while (radius > 1) {
     // Create new square
-    let rect = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    let rect = document.createElementNS(_SVG_NS, 'polygon');
 
     // Draw square and fill
     rect.setAttribute(
