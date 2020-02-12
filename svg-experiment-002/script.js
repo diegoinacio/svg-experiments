@@ -1,17 +1,17 @@
 // SVG namespace
-let _SVG_NS = 'http://www.w3.org/2000/svg';
+let _SVG_NS = "http://www.w3.org/2000/svg";
 
 let DIV = document.getElementById("svg-experiment");
-let SVG = document.createElementNS(_SVG_NS, 'svg');
-let DEFS = document.createElementNS(_SVG_NS, 'defs');
+let SVG = document.createElementNS(_SVG_NS, "svg");
+let DEFS = document.createElementNS(_SVG_NS, "defs");
 
 SVG.appendChild(DEFS);
 
 const WIDTH = 800;
 const HEIGHT = 450;
 
-SVG.setAttribute('version', '1.1');
-SVG.setAttribute('xmlns', _SVG_NS);
+SVG.setAttribute("version", "1.1");
+SVG.setAttribute("xmlns", _SVG_NS);
 SVG.setAttribute("width", WIDTH);
 SVG.setAttribute("height", HEIGHT);
 
@@ -65,19 +65,19 @@ while (y1 < HEIGHT) {
     // Loop over slices of current row
     for (let i = 0; i < N - 1; i++) {
         // Create new linear gradient for current slice
-        let grad = document.createElementNS(_SVG_NS, 'linearGradient');
+        let grad = document.createElementNS(_SVG_NS, "linearGradient");
 
         // Define gradient id and url
-        grad.id = 'Gradient' + String(id_index);
+        grad.id = "Gradient" + String(id_index);
         let id_url = "url(#" + grad.id + ")";
 
         // Set first stop (0%) for current gradient + color
-        let stop1 = document.createElementNS(_SVG_NS, 'stop');
+        let stop1 = document.createElementNS(_SVG_NS, "stop");
         stop1.setAttribute("offset", "0%");
         stop1.setAttribute("stop-color", randomColor());
 
         // Set second stop (100%) for current gradient + color
-        let stop2 = document.createElementNS(_SVG_NS, 'stop');
+        let stop2 = document.createElementNS(_SVG_NS, "stop");
         stop2.setAttribute("offset", "100%");
         stop2.setAttribute("stop-color", randomColor());
 
@@ -88,7 +88,7 @@ while (y1 < HEIGHT) {
         DEFS.appendChild(grad);
 
         // Draw current slice
-        let line = document.createElementNS(_SVG_NS, 'line');
+        let line = document.createElementNS(_SVG_NS, "line");
 
         // Define x points
         let x1 = slices[i];
@@ -99,13 +99,13 @@ while (y1 < HEIGHT) {
         x2 -= i == (N - 1) ? 2*radius + space_btw/2 : 0;
 
         // Set line/slice attributes
-        line.setAttribute('x1', x1);
-        line.setAttribute('y1', y1 + 0.0001);  // Perfectly horizontal/vertical line does not render
-        line.setAttribute('x2', x2);
-        line.setAttribute('y2', y1);
-        line.setAttribute('stroke-width', 2*radius);
-        line.setAttribute('stroke-linecap', "round");
-        line.setAttribute('stroke', id_url);
+        line.setAttribute("x1", x1);
+        line.setAttribute("y1", y1 + 0.0001);  // Perfectly horizontal/vertical line does not render
+        line.setAttribute("x2", x2);
+        line.setAttribute("y2", y1);
+        line.setAttribute("stroke-width", 2*radius);
+        line.setAttribute("stroke-linecap", "round");
+        line.setAttribute("stroke", id_url);
 
         // Include slice to SVG
         SVG.appendChild(line);
