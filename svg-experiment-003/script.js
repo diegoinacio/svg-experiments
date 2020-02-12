@@ -1,17 +1,17 @@
 // SVG namespace
-let _SVG_NS = 'http://www.w3.org/2000/svg';
+let _SVG_NS = "http://www.w3.org/2000/svg";
 
 let DIV = document.getElementById("svg-experiment");
-let SVG = document.createElementNS(_SVG_NS, 'svg');
-let DEFS = document.createElementNS(_SVG_NS, 'defs');
+let SVG = document.createElementNS(_SVG_NS, "svg");
+let DEFS = document.createElementNS(_SVG_NS, "defs");
 
 SVG.appendChild(DEFS);
 
 const WIDTH = 800;
 const HEIGHT = 450;
 
-SVG.setAttribute('version', '1.1');
-SVG.setAttribute('xmlns', _SVG_NS);
+SVG.setAttribute("version", "1.1");
+SVG.setAttribute("xmlns", _SVG_NS);
 SVG.setAttribute("width", WIDTH);
 SVG.setAttribute("height", HEIGHT);
 
@@ -31,7 +31,7 @@ function randomColor() {
 class Circle {
     constructor(offset, depth) {
         // Init circle
-        this.circle = document.createElementNS(_SVG_NS, 'circle');
+        this.circle = document.createElementNS(_SVG_NS, "circle");
         SVG.appendChild(this.circle);
 
         // Get arguments
@@ -46,14 +46,14 @@ class Circle {
 
         // Define radius randomly
         this.r = (1 - depth)*40 + Math.random()*15 + 5;
-        this.circle.setAttribute('r', this.r);
+        this.circle.setAttribute("r", this.r);
 
         // Set attributes
         this.fill = randomColor(this.depth);
-        this.circle.setAttribute('fill', this.fill);
-        this.circle.setAttribute('stroke', this.fill);
-        this.circle.setAttribute('stroke-width', 1 + Math.random()*2);
-        this.circle.setAttribute('fill-opacity', 0.75);
+        this.circle.setAttribute("fill", this.fill);
+        this.circle.setAttribute("stroke", this.fill);
+        this.circle.setAttribute("stroke-width", 1 + Math.random()*2);
+        this.circle.setAttribute("fill-opacity", 0.75);
 
         // Init general opacity
         this.opacity = depth*0.9 + 0.1;
@@ -83,9 +83,9 @@ class Circle {
     }
 
     draw() {
-        this.circle.setAttribute('cx', this.cx_);
-        this.circle.setAttribute('cy', this.cy_);
-        this.circle.setAttribute('opacity', this.opacity_);
+        this.circle.setAttribute("cx", this.cx_);
+        this.circle.setAttribute("cy", this.cy_);
+        this.circle.setAttribute("opacity", this.opacity_);
     }
 }
 
