@@ -1,14 +1,14 @@
 // SVG namespace
-let _SVG_NS = 'http://www.w3.org/2000/svg';
+let _SVG_NS = "http://www.w3.org/2000/svg";
 
 let DIV = document.getElementById("svg-experiment");
-let SVG = document.createElementNS(_SVG_NS, 'svg');
+let SVG = document.createElementNS(_SVG_NS, "svg");
 
 const WIDTH = 800;
 const HEIGHT = 450;
 
-SVG.setAttribute('version', '1.1');
-SVG.setAttribute('xmlns', _SVG_NS);
+SVG.setAttribute("version", "1.1");
+SVG.setAttribute("xmlns", _SVG_NS);
 SVG.setAttribute("width", WIDTH);
 SVG.setAttribute("height", HEIGHT);
 
@@ -51,14 +51,14 @@ let radius = 800;      // Initial radius
 // Define new squares based on the idea of squares inscribed in another square
 while (radius > 1) {
     // Create new square
-    let rect = document.createElementNS(_SVG_NS, 'polygon');
+    let rect = document.createElementNS(_SVG_NS, "polygon");
 
     // Draw square and fill
     rect.setAttribute(
-        'points', 
+        "points", 
         getPoints(WIDTH/2, HEIGHT/2, radius, theta)
     );
-    rect.setAttribute('fill', randomColor());
+    rect.setAttribute("fill", randomColor());
 
     // Increase theta and define phi randomly
     theta += phi = 2*Math.PI*(Math.random()*2 - 1)*theta_var;
