@@ -16,7 +16,7 @@ SVG.setAttribute("width", WIDTH);
 SVG.setAttribute("height", HEIGHT);
 
 
-// Utils
+// ! Utils
 function getSlices(N, min, max) {
     // Define slices for each row
     let slices = [];
@@ -32,16 +32,22 @@ function getSlices(N, min, max) {
 }
 
 function randomColor() {
-    // Get new random and normalized color
+    // Get random channels
     let r = Math.random();
     let g = Math.random();
     let b = Math.random();
+    // Get norm
     let n = Math.sqrt(r*r + g*g + b*b);
-    return "rgb(" + 255*r/n + ", " + 255*g/n + ", " + 255*b/n + ")";
+    // Normalize channels
+    r = Math.floor(255*r/n);
+    g = Math.floor(255*g/n);
+    b = Math.floor(255*b/n);
+    // Output
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 
-// Parameters
+// ! Parameters
 let steps = 32;     // Number of rows
 let space_btw = 4;  // Space between lines
 
@@ -55,21 +61,21 @@ let x_min = space_btw + radius;          // Define x minimum
 let x_max = WIDTH - radius - space_btw;  // Define x maximum
 
 
-// Draw lines
+// ! Draw lines
 while (y1 < HEIGHT) {
     // Get number of slices for current row
     let N = Math.floor(4 + Math.random()*4);
     // Get slices
     let slices = getSlices(N, x_min, x_max);
 
-    // Loop over slices of current row
+    // /! Loop over slices of current row
     for (let i = 0; i < N - 1; i++) {
         // Create new linear gradient for current slice
         let grad = document.createElementNS(_SVG_NS, "linearGradient");
 
         // Define gradient id and url
-        grad.id = "Gradient" + String(id_index);
-        let id_url = "url(#" + grad.id + ")";
+        grad.id = `Gradient${id_index}`;
+        let id_url = `url(#${grad.id})`;
 
         // Set first stop (0%) for current gradient + color
         let stop1 = document.createElementNS(_SVG_NS, "stop");
@@ -100,7 +106,7 @@ while (y1 < HEIGHT) {
 
         // Set line/slice attributes
         line.setAttribute("x1", x1);
-        line.setAttribute("y1", y1 + 0.0001);  // Perfectly horizontal/vertical line does not render
+        line.setAttribute("y1", y1 + 0.0001);  // ! Perfectly horizontal/vertical line does not render
         line.setAttribute("x2", x2);
         line.setAttribute("y2", y1);
         line.setAttribute("stroke-width", 2*radius);

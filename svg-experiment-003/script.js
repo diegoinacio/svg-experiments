@@ -16,18 +16,24 @@ SVG.setAttribute("width", WIDTH);
 SVG.setAttribute("height", HEIGHT);
 
 
-// Utils
+// ! Utils
 function randomColor() {
-    // Get new random and normalized color
+    // Get random channels
     let r = Math.random();
     let g = Math.random();
     let b = Math.random();
+    // Get norm
     let n = Math.sqrt(r*r + g*g + b*b);
-    return "rgb(" + 255*r/n + ", " + 255*g/n + ", " + 255*b/n + ")";
+    // Normalize channels
+    r = Math.floor(255*r/n);
+    g = Math.floor(255*g/n);
+    b = Math.floor(255*b/n);
+    // Output
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 
-// Classes
+// ! Classes
 class Circle {
     constructor(offset, depth) {
         // Init circle
@@ -90,7 +96,7 @@ class Circle {
 }
 
 
-// Mouse events
+// ! Mouse events
 const mouse = {
     x: WIDTH/2,
     y: HEIGHT/2
@@ -99,23 +105,23 @@ const mouse = {
 DIV.onmousemove = function(e) {
     let RECT = DIV.getBoundingClientRect();
 
-    //
+    // Relative x
     mouse.x = (e.clientX - RECT.left);
     mouse.x /= (RECT.right - RECT.left);
     mouse.x =  mouse.x*WIDTH;
 
-    // 
+    // Relative y
     mouse.y = (e.clientY - RECT.top);
     mouse.y /= (RECT.bottom - RECT.top);
     mouse.y = mouse.y*HEIGHT;
 };
 
 
-// Parameters
+// ! Parameters
 const MAX_OFFSET = 256;  // Maximum parallax offset
 const N = 512;           // Number of bokehs
 
-// Init circles
+// ! Init circles
 let CIRCLES = [];
 for (let i = 0; i < N; i++) {
     let CIRCLE = new Circle(MAX_OFFSET, i/N);

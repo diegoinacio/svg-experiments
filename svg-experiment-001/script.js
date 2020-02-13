@@ -13,12 +13,12 @@ SVG.setAttribute("width", WIDTH);
 SVG.setAttribute("height", HEIGHT);
 
 
-// Utils
+// ! Utils
 function rotate(p, cx, cy, theta) {
     // Rotate polygon
     rx = (p[0] - cx)*Math.cos(theta) - (p[1] - cy)*Math.sin(theta) + cx;
     ry = (p[0] - cx)*Math.sin(theta) + (p[1] - cy)*Math.cos(theta) + cy;
-    return [rx, ry];
+    return {x: rx, y: ry};
 }
 
 function getPoints(cx, cy, r, theta) {
@@ -27,20 +27,26 @@ function getPoints(cx, cy, r, theta) {
     let pb = rotate([cx, cy + r], cx, cy, theta);
     let pc = rotate([cx - r, cy], cx, cy, theta);
     let pd = rotate([cx, cy - r], cx, cy, theta);
-    return pa[0] + ", " + pa[1] + " " + pb[0] + ", " + pb[1] + " " + pc[0] + ", " + pc[1] + " " + pd[0] + ", " + pd[1] + "";
+    return `${pa.x}, ${pa.y} ${pb.x}, ${pb.y} ${pc.x}, ${pc.y} ${pd.x}, ${pd.y}`;
 }
 
 function randomColor() {
-    // Get new random and normalized color
+    // Get random channels
     let r = Math.random();
     let g = Math.random();
     let b = Math.random();
+    // Get norm
     let n = Math.sqrt(r*r + g*g + b*b);
-    return "rgb(" + 255*r/n + ", " + 255*g/n + ", " + 255*b/n + ")";
+    // Normalize channels
+    r = Math.floor(255*r/n);
+    g = Math.floor(255*g/n);
+    b = Math.floor(255*b/n);
+    // Output
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 
-// Parameters
+// ! Parameters
 let phi = 0;           // Current angle
 let phi_a = 0;         // Current angle (absolute value)
 let theta = 0;         // Incremental angle
@@ -48,7 +54,8 @@ let theta_var = 0.02;  // Theta variance factor
 let radius = 800;      // Initial radius
 
 
-// Define new squares based on the idea of squares inscribed in another square
+// ! Define new squares based on the idea of
+// ! squares inscribed in another square
 while (radius > 1) {
     // Create new square
     let rect = document.createElementNS(_SVG_NS, "polygon");
