@@ -1,0 +1,104 @@
+// ! Color Palette
+// ? "vintage card" @ color.adobe.com
+@color_11: #5C4B51;
+@color_12: #8CBEB2;
+@color_13: #F2EBBF;
+@color_14: #F3B562;
+@color_15: #F06060;
+// ? "vintage pop" @ color.adobe.com
+@color_21: #7a6e72;
+@color_22: #FFC636;
+@color_23: #00ADA9;
+@color_24: #FFFFFF;
+@color_25: #FF6444;
+
+
+// ! Mix-ins
+.fill-interpolation() {
+    fill: black;
+
+    &[level="0"] {
+        fill: @color_11;
+    }
+
+    &[level="1"] {
+        fill: @color_12;
+    }
+
+    &[level="2"] {
+        fill: @color_14;
+    }
+
+    &[level="3"] {
+        fill: @color_15;
+    }
+}
+
+.stroke-interpolation() {
+    stroke: black;
+
+    &[level="0"] {
+        stroke: @color_21;
+    }
+
+    &[level="1"] {
+        stroke: @color_22;
+    }
+
+    &[level="2"] {
+        stroke: @color_23;
+    }
+
+    &[level="3"] {
+        stroke: @color_25;
+    }
+}
+
+
+// ! Selectors
+#svg-experiment {
+    background-color: @color_13;
+}
+
+// ? Patterns
+#pattern-circles {
+    stroke: black;
+    stroke-width: 1;
+    fill-opacity: 0.75;
+}
+
+#pattern-paths {
+    stroke: black;
+    stroke-width: 2;
+    stroke-linecap: round;
+    fill: transparent;
+}
+
+#pattern-lines {
+    stroke: black;
+}
+
+#background-grid {
+    stroke: black;
+    stroke-width: 0.5;
+    stroke-opacity: 0.1;
+}
+
+// ? Fill shapes
+#fill-shape {
+    fill: black;
+    .fill-interpolation();
+}
+
+// ? Paths
+*[id^="zz-path"] {
+    fill: transparent;
+    stroke-width: 5;
+    .stroke-interpolation();
+}
+
+#drop-shadow {
+    fill: transparent;
+    stroke: #444;
+    stroke-width: 5;
+}
