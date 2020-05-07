@@ -80,8 +80,8 @@ a.link-code:hover {
 .section .item .content {
     position: absolute;
     visibility: hidden;
-    background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.75);
+    /* backdrop-filter: blur(5px); */
     z-index: 100;
     opacity: 0;
     transform: translateY(20px);
