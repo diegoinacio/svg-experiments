@@ -1,134 +1,143 @@
-/* * Reset all elements */
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@900&display=swap");
+
+/* ! Global variables */
+:root {
+  --bg-index: white;
+  --max-width: 800px;
+}
+
+/* ! Reset all elements */
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-
-/* * HTML elements */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 1.5em;
-    width: 800px;
-    margin: auto;
+hr {
+  border-top: 1px dashed lightgray;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
-h1 {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    font-size: 48px;
-    font-weight: bolder;
+/* ! Index page styling */
+body.index {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  width: var(--max-width);
+  margin: auto;
+  background-color: var(--bg-index);
 }
 
-h2 {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-size: 32px;
-    font-weight: bolder;
-    text-transform: uppercase;
+body.index h1 {
+  font-family: "Amatic SC", cursive;
+  margin-top: 50px;
+  font-size: 64px;
+  font-weight: lighter;
 }
 
-hr.separator {
-    clear: both;
-    border: 1px solid rgba(0, 0, 0, 0.025);
+body.index h2 {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 74px;
+  font-weight: bolder;
+  text-transform: uppercase;
 }
 
-svg {
-    display: block;
+body.index p.signature {
+  font-family: "Amatic SC", cursive;
+  font-size: 24px;
+  font-weight: lighter;
+  margin-left: 20px;
 }
 
-a {
-    text-decoration: none;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-size: 28px;
-    font-weight: bolder;
+body.index p.signature span {
+  font-weight: bold;
 }
 
-a.link-svg {
-    color: rgb(255, 0, 25);
-    text-transform: uppercase;
-    font-weight: 800;
+body div.section div.item {
+  /* * background image */
+  background-image: var(--bgi);
+  background-size: var(--max-width) auto;
+  background-attachment: local;
+  background-position: center;
 }
 
-a.link-code {
-    color: black;
+body div.section div.item a {
+  transition: color 1s, -webkit-text-stroke 0.75s, backdrop-filter 0.5s;
+  /* * formatting */
+  padding: 50px 0 50px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* * colors and text styling */
+  text-decoration: none;
+  color: transparent;
+  -webkit-text-stroke: 1px black;
+  /* * background image */
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: var(--bgi);
+  /* * backdrop filtering */
+  backdrop-filter: blur(5px) saturate(0.1) contrast(0.75);
+  background-size: var(--max-width) auto;
+  background-attachment: local;
+  background-position: center;
 }
 
-a.link-svg:hover {
-    color: rgb(255, 128, 25);
+body div.section div.item a:hover {
+  /* * colors and text styling */
+  color: var(--color);
+  -webkit-text-stroke: 1px var(--stroke);
+  /* * backdrop filtering */
+  backdrop-filter: blur(0px) saturate(1) contrast(1);
 }
 
-a.link-code:hover {
-    color: gray;
+/* ! Experiment pages styling */
+body.experiment {
+  overflow: hidden;
 }
 
-
-/* * Local selectors */
-.section {
-    clear: both;
-    margin-top: 40px;
-}
-
-.section .item {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.section .item .content {
-    position: absolute;
-    visibility: hidden;
-    background-color: rgba(255, 255, 255, 0.75);
-    /* backdrop-filter: blur(5px); */
-    z-index: 100;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.section .item:hover .content {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(10px);
-}
-
-.section .item .content img {
-    max-width: 450px;
-    height: auto;
-    float: left;
-    opacity: 0.75;
-}
-
-#svg-experiment {
-    margin-top: 40px;
-    border-style: dotted;
-    border-width: 1px;
-    border-color: lightgray;
-    display: block;
-}
-
-.comment {
-    color: gray;
-}
-
-/* * GitHub Corner */
-
-.github-corner svg {
-    position:absolute;
-    right:0;
-    top:0;
-    mix-blend-mode:darken;
-    color:#ffffff;
-    fill:#000000;
+/* ! GitHub Corner */
+.github-corner {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .github-corner:hover .octo-arm {
-    animation:octocat-wave .5s;
+  animation: octocat-wave 0.5s;
 }
 
 @keyframes octocat-wave {
-    0%, 100%{transform:rotate(0);}
-    20%, 60%{transform:rotate(-20deg);}
-    40%, 80%{transform:rotate(10deg);}
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-20deg);
+  }
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+
+.github-corner.index {
+  /* ! Without mix-blend-mode because .. */
+  /* ! .. it breaks the backdrop filters */
+  color: var(--bg-index);
+  fill: black;
+}
+
+.github-corner.light {
+  mix-blend-mode: screen;
+  color: black;
+  fill: white;
+}
+
+.github-corner.dark {
+  mix-blend-mode: darken;
+  color: white;
+  fill: black;
 }
