@@ -3,6 +3,7 @@ let _SVG_NS = "http://www.w3.org/2000/svg";
 
 let DIV = document.getElementById("svg-experiment");
 let SVG = document.createElementNS(_SVG_NS, "svg");
+let DEFS = document.createElementNS(_SVG_NS, "defs");
 
 DIV.appendChild(SVG);
 
@@ -60,6 +61,114 @@ function setSVG() {
   SVG.setAttribute("height", HEIGHT);
 }
 
+function dropShadow() {
+  // !
+  let filter, blur, offset, flood, composite;
+
+  // * Init filter
+  filter = document.createElementNS(_SVG_NS, "filter");
+  filter.id = "drop-shadow";
+  filter.setAttribute("x", `-50%`);
+  filter.setAttribute("y", `-50%`);
+  filter.setAttribute("width", `200%`);
+  filter.setAttribute("height", `200%`);
+
+  // ? Drop Shadow A
+
+  // * Blur 1
+  blur = document.createElementNS(_SVG_NS, "feGaussianBlur");
+  blur.setAttribute("in", "SourceAlpha");
+  blur.setAttribute("stdDeviation", "7");
+  blur.setAttribute("result", "blur1");
+
+  filter.appendChild(blur);
+
+  // * Composite 1
+  composite = document.createElementNS(_SVG_NS, "feComposite");
+  composite.setAttribute("in2", "SourceAlpha");
+  composite.setAttribute("operator", "arithmetic");
+  composite.setAttribute("k2", -1);
+  composite.setAttribute("k3", 1);
+  composite.setAttribute("result", "composite1");
+
+  filter.appendChild(composite);
+
+  // * Flood 1
+  flood = document.createElementNS(_SVG_NS, "feFlood");
+  flood.setAttribute("flood-color", "black");
+  flood.setAttribute("flood-opacity", 0.75);
+
+  filter.appendChild(flood);
+
+  // * Composite 2
+  composite = document.createElementNS(_SVG_NS, "feComposite");
+  composite.setAttribute("in2", "composite1");
+  composite.setAttribute("operator", "in");
+  composite.setAttribute("result", "composite2");
+
+  filter.appendChild(composite);
+
+  // * Composite 3
+  composite = document.createElementNS(_SVG_NS, "feComposite");
+  composite.setAttribute("in2", "SourceGraphic");
+  composite.setAttribute("operator", "over");
+  composite.setAttribute("result", "composite3");
+
+  filter.appendChild(composite);
+
+  // ? Drop Shadow B
+
+  // * Blur 2
+  blur = document.createElementNS(_SVG_NS, "feGaussianBlur");
+  blur.setAttribute("in", "SourceAlpha");
+  blur.setAttribute("stdDeviation", "5");
+  blur.setAttribute("result", "blur2");
+
+  filter.appendChild(blur);
+
+  // * Offset 2
+  offset = document.createElementNS(_SVG_NS, "feOffset");
+  offset.setAttribute("dx", 5);
+  offset.setAttribute("dy", 7);
+
+  filter.appendChild(offset);
+
+  // * Composite 4
+  composite = document.createElementNS(_SVG_NS, "feComposite");
+  composite.setAttribute("in2", "SourceAlpha");
+  composite.setAttribute("operator", "arithmetic");
+  composite.setAttribute("k2", -1);
+  composite.setAttribute("k3", 1);
+  composite.setAttribute("result", "composite4");
+
+  filter.appendChild(composite);
+
+  // * Flood 2
+  flood = document.createElementNS(_SVG_NS, "feFlood");
+  flood.setAttribute("flood-color", "black");
+  flood.setAttribute("flood-opacity", 0.75);
+
+  filter.appendChild(flood);
+
+  // * Composite 5
+  composite = document.createElementNS(_SVG_NS, "feComposite");
+  composite.setAttribute("in2", "composite4");
+  composite.setAttribute("operator", "in");
+  composite.setAttribute("result", "composite5");
+
+  filter.appendChild(composite);
+
+  // * Composite 6
+  composite = document.createElementNS(_SVG_NS, "feComposite");
+  composite.setAttribute("in2", "SourceGraphic");
+  composite.setAttribute("operator", "over");
+  composite.setAttribute("result", "composite6");
+
+  filter.appendChild(composite);
+
+  DEFS.appendChild(filter);
+}
+
 function draw() {
   // ! Draw new squares based on the idea of
   // ! squares inscribed in another square
@@ -74,6 +183,9 @@ function draw() {
   while (radius > 5) {
     // * Create new square
     let rect = document.createElementNS(_SVG_NS, "polygon");
+
+    // * Drop Shadow
+    rect.style = "filter: url(#drop-shadow);";
 
     // * Draw square and fill
     rect.setAttribute("points", getPoints(CENTER.x, CENTER.y, radius, theta));
@@ -98,8 +210,11 @@ function main() {
   // ! Main function
   // * Clear SVG
   SVG.innerHTML = "";
+  DEFS.innerHTML = "";
+  SVG.appendChild(DEFS);
 
   setSVG();
+  dropShadow();
   draw();
 }
 
