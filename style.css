@@ -34,6 +34,7 @@ body.index h1 {
   margin-top: 50px;
   font-size: 64px;
   font-weight: lighter;
+  margin-left: 10px;
 }
 
 body.index h2 {
@@ -65,7 +66,7 @@ body div.section div.item {
 body div.section div.item a {
   transition: color 1s, -webkit-text-stroke 0.75s, backdrop-filter 0.5s;
   /* * formatting */
-  padding: 50px 0 50px 0;
+  padding: 10% 0 10% 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,6 +91,42 @@ body div.section div.item a:hover {
   -webkit-text-stroke: 1px var(--stroke);
   /* * backdrop filtering */
   backdrop-filter: blur(0px) saturate(1) contrast(1);
+}
+
+@media only screen and (max-width: 800px) {
+  hr {
+    margin-top: 4vw;
+    margin-bottom: 4vw;
+  }
+
+  body.index {
+    width: 100%;
+  }
+
+  body.index h1 {
+    margin-top: 5vw;
+    font-size: 8vw;
+    margin-left: 1vw;
+  }
+
+  body.index h2 {
+    font-size: 9vw;
+  }
+
+  body.index p.signature {
+    font-size: 3vw;
+    margin-left: 2vw;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  body div.section div.item a:hover {
+    /* * colors and text styling */
+    color: var(--color);
+    -webkit-text-stroke: 1px var(--stroke);
+    /* * backdrop filtering */
+    backdrop-filter: blur(0px) saturate(1) contrast(1);
+  }
 }
 
 /* ! Experiment pages styling */
@@ -124,8 +161,8 @@ body.experiment {
 }
 
 .github-corner.index {
-  /* ! Without mix-blend-mode because .. */
-  /* ! .. it breaks the backdrop filters */
+  /* * Without mix-blend-mode because .. */
+  /* * .. it breaks the backdrop filters */
   color: var(--bg-index);
   fill: black;
 }
