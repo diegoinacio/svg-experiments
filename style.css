@@ -51,8 +51,16 @@ body.index p.signature {
   margin-left: 20px;
 }
 
-body.index p.signature span {
+body.index p.signature a {
   font-weight: bold;
+  text-decoration: none;
+  color: black;
+  transition: color 0.5s;
+}
+
+body.index p.signature a:hover {
+  color: red;
+  transition: color 0.5s;
 }
 
 body div.section div.item {
