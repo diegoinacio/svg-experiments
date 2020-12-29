@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@900&display=swap");
+
+// ! Global variables
+$bg-index: white;
+$max-width: 800px;
+
+/* ! Reset all elements */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+hr {
+  border-top: 1px dashed lightgray;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/* ! Index page styling */
+body.index {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  width: $max-width;
+  margin: auto;
+  background-color: $bg-index;
+
+  h1 {
+    font-family: "Amatic SC", cursive;
+    margin-top: 50px;
+    font-size: 64px;
+    font-weight: lighter;
+    margin-left: 10px;
+  }
+
+  h2 {
+    font-family: "Titillium Web", sans-serif;
+    font-size: 74px;
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+
+  .signature {
+    font-family: "Amatic SC", cursive;
+    font-size: 24px;
+    font-weight: lighter;
+    margin-left: 20px;
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+      transition: color 0.5s;
+
+      &:hover {
+        color: red;
+        transition: color 0.5s;
+      }
+    }
+  }
+
+  .section {
+    .item {
+      /* * background image */
+      background-image: var(--bgi);
+      background-size: $max-width auto;
+      background-attachment: local;
+      background-position: center;
+
+      a {
+        transition: color 1s, -webkit-text-stroke 0.75s, backdrop-filter 0.5s;
+        /* * formatting */
+        padding: 10% 0 10% 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* * colors and text styling */
+        text-decoration: none;
+        color: transparent;
+        -webkit-text-stroke: 1px black;
+        /* * background image */
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-image: var(--bgi);
+        /* * backdrop filtering */
+        -webkit-backdrop-filter: blur(5px) saturate(0.1) contrast(0.75);
+        backdrop-filter: blur(5px) saturate(0.1) contrast(0.75);
+        background-size: $max-width auto;
+        background-attachment: local;
+        background-position: center;
+
+        &:hover {
+          /* * colors and text styling */
+          color: var(--color);
+          -webkit-text-stroke: 1px var(--stroke);
+          /* * backdrop filtering */
+          -webkit-backdrop-filter: blur(0px) saturate(1) contrast(1);
+          backdrop-filter: blur(0px) saturate(1) contrast(1);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $max-width) {
+  hr {
+    margin-top: 4vw;
+    margin-bottom: 4vw;
+  }
+
+  body.index {
+    width: 100%;
+
+    h1 {
+      margin-top: 5vw;
+      font-size: 8vw;
+      margin-left: 1vw;
+    }
+
+    h2 {
+      font-size: 9vw;
+    }
+
+    .signature {
+      font-size: 3vw;
+      margin-left: 2vw;
+    }
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  /* ! Detect touch screen devices */
+  body.index {
+    .section {
+      .item {
+        a {
+          transition: none;
+          /* * colors and text styling */
+          color: var(--color);
+          -webkit-text-stroke: 1px var(--stroke);
+          /* * backdrop filtering */
+          -webkit-backdrop-filter: blur(0px) saturate(1) contrast(1);
+          backdrop-filter: blur(0px) saturate(1) contrast(1);
+        }
+      }
+    }
+  }
+}
+
+/* ! Experiment pages styling */
+body.experiment {
+  overflow: hidden;
+}
+
+/* ! GitHub Corner */
+.github-corner {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &.triangle:hover {
+    .octo-arm {
+      animation: octocat-wave 0.5s;
+    }
+  }
+
+  &.index {
+    /* * Without mix-blend-mode because .. */
+    /* * .. it breaks the backdrop filters */
+    color: $bg-index;
+    fill: black;
+  }
+
+  &.light {
+    mix-blend-mode: screen;
+    color: black;
+    fill: white;
+  }
+
+  &.dark {
+    mix-blend-mode: darken;
+    color: white;
+    fill: black;
+  }
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-20deg);
+  }
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
