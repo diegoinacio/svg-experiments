@@ -159,29 +159,48 @@ body.experiment {
   right: 0;
   top: 0;
 
-  &.triangle:hover {
-    .octo-arm {
-      animation: octocat-wave 0.5s;
+  svg {
+    width: 3.5rem;
+    height: 3.5rem;
+
+    a {
+      &:hover {
+        .octo-arm {
+          animation: octocat-wave 0.5s;
+        }
+      }
     }
   }
 
   &.index {
     /* * Without mix-blend-mode because .. */
     /* * .. it breaks the backdrop filters */
-    color: $bg-index;
-    fill: black;
+    svg {
+      a {
+        color: $bg-index;
+        fill: black;
+      }
+    }
   }
 
   &.light {
-    mix-blend-mode: screen;
-    color: black;
-    fill: white;
+    svg {
+      a {
+        mix-blend-mode: screen;
+        color: black;
+        fill: white;
+      }
+    }
   }
 
   &.dark {
-    mix-blend-mode: darken;
-    color: white;
-    fill: black;
+    svg {
+      a {
+        mix-blend-mode: darken;
+        color: white;
+        fill: black;
+      }
+    }
   }
 }
 

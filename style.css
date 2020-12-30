@@ -151,7 +151,12 @@ body.experiment {
   top: 0;
 }
 
-.github-corner.triangle:hover .octo-arm {
+.github-corner svg {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.github-corner svg a:hover .octo-arm {
   -webkit-animation: octocat-wave 0.5s;
           animation: octocat-wave 0.5s;
 }
@@ -159,17 +164,20 @@ body.experiment {
 .github-corner.index {
   /* * Without mix-blend-mode because .. */
   /* * .. it breaks the backdrop filters */
+}
+
+.github-corner.index svg a {
   color: white;
   fill: black;
 }
 
-.github-corner.light {
+.github-corner.light svg a {
   mix-blend-mode: screen;
   color: black;
   fill: white;
 }
 
-.github-corner.dark {
+.github-corner.dark svg a {
   mix-blend-mode: darken;
   color: white;
   fill: black;
