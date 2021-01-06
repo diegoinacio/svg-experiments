@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;900&display=swap");
 /* ! Reset all elements */
 * {
   margin: 0;
@@ -14,14 +14,14 @@ hr {
 }
 
 /* ! Index page styling */
-body.index {
+body.index .wrapper {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   width: 800px;
   margin: auto;
   background-color: white;
 }
 
-body.index h1 {
+body.index .wrapper h1 {
   font-family: "Amatic SC", cursive;
   margin-top: 50px;
   font-size: 64px;
@@ -29,21 +29,21 @@ body.index h1 {
   margin-left: 10px;
 }
 
-body.index h2 {
+body.index .wrapper h2 {
   font-family: "Titillium Web", sans-serif;
   font-size: 74px;
   font-weight: bolder;
   text-transform: uppercase;
 }
 
-body.index .signature {
+body.index .wrapper .signature {
   font-family: "Amatic SC", cursive;
   font-size: 24px;
   font-weight: lighter;
   margin-left: 20px;
 }
 
-body.index .signature a {
+body.index .wrapper .signature a {
   font-weight: bold;
   text-decoration: none;
   color: black;
@@ -51,13 +51,13 @@ body.index .signature a {
   transition: color 0.5s;
 }
 
-body.index .signature a:hover {
+body.index .wrapper .signature a:hover {
   color: red;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
 }
 
-body.index .section .item {
+body.index .wrapper .section .item {
   /* * background image */
   background-image: var(--bgi);
   background-size: 800px auto;
@@ -65,7 +65,7 @@ body.index .section .item {
   background-position: center;
 }
 
-body.index .section .item a {
+body.index .wrapper .section .item a {
   transition: color 1s, -webkit-text-stroke 0.75s, backdrop-filter 0.5s;
   /* * formatting */
   padding: 10% 0 10% 0;
@@ -94,7 +94,7 @@ body.index .section .item a {
   background-position: center;
 }
 
-body.index .section .item a:hover {
+body.index .wrapper .section .item a:hover {
   /* * colors and text styling */
   color: var(--color);
   -webkit-text-stroke: 1px var(--stroke);
@@ -108,18 +108,18 @@ body.index .section .item a:hover {
     margin-top: 4vw;
     margin-bottom: 4vw;
   }
-  body.index {
+  body.index .wrapper {
     width: 100%;
   }
-  body.index h1 {
+  body.index .wrapper h1 {
     margin-top: 5vw;
     font-size: 8vw;
     margin-left: 1vw;
   }
-  body.index h2 {
+  body.index .wrapper h2 {
     font-size: 9vw;
   }
-  body.index .signature {
+  body.index .wrapper .signature {
     font-size: 3vw;
     margin-left: 2vw;
   }
@@ -127,7 +127,7 @@ body.index .section .item a:hover {
 
 @media (hover: none) and (pointer: coarse) {
   /* ! Detect touch screen devices */
-  body.index .section .item a {
+  body.index .wrapper .section .item a {
     -webkit-transition: none;
     transition: none;
     /* * colors and text styling */
@@ -140,8 +140,78 @@ body.index .section .item a:hover {
 }
 
 /* ! Experiment pages styling */
-body.experiment {
+body.experiment .wrapper {
   overflow: hidden;
+}
+
+body.experiment .wrapper .description {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  opacity: 0;
+  border: 1px dashed gray;
+  padding: 0.5em;
+  max-width: 60%;
+  position: absolute;
+  bottom: 25px;
+  right: 5px;
+}
+
+body.experiment .wrapper .description[visible] {
+  opacity: 1;
+  bottom: 5px;
+}
+
+body.experiment .wrapper .description p:first-child {
+  margin-top: 1.5em;
+}
+
+body.experiment .wrapper .description .top-tab {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-bottom: 1px dashed gray;
+}
+
+body.experiment .wrapper .description .top-tab .close {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  background-color: gray;
+  float: right;
+  padding: 0 0.5em 0.1em 0.5em;
+  font-family: "Titillium Web", sans-serif;
+  text-decoration: none;
+  font-weight: lighter;
+}
+
+body.experiment .wrapper .description .top-tab .close::before {
+  content: "x";
+}
+
+body.experiment .wrapper .description.light {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+body.experiment .wrapper .description.light .close {
+  color: white;
+}
+
+body.experiment .wrapper .description.light .close:hover {
+  background-color: black;
+}
+
+body.experiment .wrapper .description.dark {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+body.experiment .wrapper .description.dark .close {
+  color: black;
+}
+
+body.experiment .wrapper .description.dark .close:hover {
+  background-color: white;
 }
 
 /* ! GitHub Corner */
