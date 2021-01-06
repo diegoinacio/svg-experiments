@@ -15,3 +15,21 @@ GITHUB_CORNER.innerHTML = `
   </a>
 </svg>
 `;
+
+// ! Include description box
+window.addEventListener("DOMContentLoaded", () => {
+  let description = document.querySelector(".description");
+  let div = document.createElement("div");
+  div.className = "top-tab";
+  div.innerHTML = `<a href="#" class="close" title="Close description"></a>`;
+  description.appendChild(div);
+
+  setTimeout(() => {
+    description.setAttribute("visible", "");
+  }, 2000);
+
+  description.querySelector(".close").addEventListener("click", (event) => {
+    event.stopPropagation();
+    description.removeAttribute("visible");
+  });
+});
