@@ -19,6 +19,13 @@ GITHUB_CORNER.innerHTML = `
 // ! Include description box
 window.addEventListener("DOMContentLoaded", () => {
   let description = document.querySelector(".description");
+  let tbody = description.querySelector(":scope table tbody");
+
+  let tr = document.createElement("tr");
+  tr.innerHTML =
+    "<td>🖥️</td> <td><em>Double-click</em> to toggle to <em>full screen</em>.</td>";
+  tbody.appendChild(tr);
+
   let div = document.createElement("div");
   div.className = "top-tab";
   div.innerHTML = `<a href="#" class="close" title="Close description"></a>`;
@@ -32,4 +39,26 @@ window.addEventListener("DOMContentLoaded", () => {
     event.stopPropagation();
     description.removeAttribute("visible");
   });
+});
+
+// ! Include full screen event with double-click
+function getFullscreenElement() {
+  return (
+    document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.mozFullscreenElement ||
+    document.msFullscreenElement
+  );
+}
+
+function toggleFullscreen() {
+  if (getFullscreenElement()) {
+    document.exitFullscreen();
+  } else {
+    document.documentElement.requestFullscreen();
+  }
+}
+
+document.addEventListener("dblclick", () => {
+  toggleFullscreen();
 });
