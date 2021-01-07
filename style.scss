@@ -174,8 +174,15 @@ body.experiment {
         bottom: 5px;
       }
 
-      p:first-child {
+      table {
         margin-top: 1.5em;
+
+        tr {
+          td:first-child {
+            text-align: center;
+            padding-right: 0.25em;
+          }
+        }
       }
 
       .top-tab {
