@@ -140,7 +140,7 @@ body.index .wrapper .section .item a:hover {
 }
 
 /* ! Experiment pages styling */
-body.experiment .wrapper {
+body.experiment {
   overflow: hidden;
 }
 

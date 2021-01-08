@@ -156,9 +156,9 @@ body.index {
 
 /* ! Experiment pages styling */
 body.experiment {
-  .wrapper {
-    overflow: hidden;
+  overflow: hidden;
 
+  .wrapper {
     .description {
       transition: 0.5s ease;
       opacity: 0;
