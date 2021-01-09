@@ -1,9 +1,9 @@
 // * SVG namespace
-let _SVG_NS = "http://www.w3.org/2000/svg";
+const _SVG_NS = "http://www.w3.org/2000/svg";
 
-let DIV = document.getElementById("svg-experiment");
-let SVG = document.createElementNS(_SVG_NS, "svg");
-let DEFS = document.createElementNS(_SVG_NS, "defs");
+const DIV = document.getElementById("svg-experiment");
+const SVG = document.createElementNS(_SVG_NS, "svg");
+const DEFS = document.createElementNS(_SVG_NS, "defs");
 
 DIV.appendChild(SVG);
 
@@ -13,8 +13,20 @@ let HEIGHT = window.innerHeight;
 
 let CENTER = { x: WIDTH / 2, y: HEIGHT / 2 };
 
+let minimumRadius = Math.min(WIDTH, HEIGHT) / 100;
+
 // ! Parameters
 const THETA_VAR = 0.02; // Theta variance factor
+
+// ! Drop Shadow
+if (!window.mobileAndTabletCheck()) {
+  // * Include drop shadow filter if it isn't a mobile device
+  document.head.querySelector("style").innerHTML += `
+    svg polygon {
+      filter: url(#drop-shadow);
+    }
+  `;
+}
 
 // ! Utils
 function rotate(p, cx, cy, theta) {
@@ -62,7 +74,7 @@ function setSVG() {
 }
 
 function dropShadow() {
-  // !
+  // ! Build drop shadow filter
   let filter, blur, offset, flood, composite;
 
   // * Init filter
@@ -180,12 +192,9 @@ function draw() {
   // * Define initial radius
   let radius = 2 * Math.max(WIDTH, HEIGHT);
 
-  while (radius > 5) {
+  while (radius > minimumRadius) {
     // * Create new square
     let rect = document.createElementNS(_SVG_NS, "polygon");
-
-    // * Drop Shadow
-    rect.style = "filter: url(#drop-shadow);";
 
     // * Draw square and fill
     rect.setAttribute("points", getPoints(CENTER.x, CENTER.y, radius, theta));
@@ -214,7 +223,12 @@ function main() {
   SVG.appendChild(DEFS);
 
   setSVG();
-  dropShadow();
+
+  if (!window.mobileAndTabletCheck()) {
+    // * Do not build drop shadow filter in mobile devices
+    dropShadow();
+  }
+
   draw();
 }
 
@@ -227,10 +241,11 @@ window.addEventListener("click", (event) => {
   main();
 });
 
-window.addEventListener("resize", (event) => {
+window.addEventListener("resize", () => {
   WIDTH = window.innerWidth;
   HEIGHT = window.innerHeight;
   CENTER.x = WIDTH / 2;
   CENTER.y = HEIGHT / 2;
+  minimumRadius = Math.min(WIDTH, HEIGHT) / 100;
   main();
 });
