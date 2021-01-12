@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>PseuDoF</title>
 
+    <!-- ! meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Diego Inácio" />
+    <meta
+      property="og:url"
+      content="https://diegoinacio.github.io/svg-experiments/svg-experiment-005/index.html"
+    />
+    <meta
+      name="title"
+      property="og:title"
+      content="PseuDoF >> SVG Experiments | Diego Inácio"
+    />
+    <meta
+      name="description"
+      property="og:description"
+      content="Interactive pseudo Depth of Field effect."
+    />
+    <meta name="image" property="og:image" content="thumb.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <!-- /! custom meta tags -->
 
-<head>
-  <title>PseuDoF</title>
+    <link type="text/css" rel="stylesheet" href="../style.css" />
+    <style>
+      #svg-experiment {
+        background: radial-gradient(rgb(80, 88, 85), rgb(41, 34, 28));
+      }
+    </style>
 
-  <!-- ! meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Diego Inácio" />
-  <meta property="og:url" content="https://diegoinacio.github.io/svg-experiments/svg-experiment-005/index.html" />
-  <meta name="title" property="og:title" content="PseuDoF >> SVG Experiments | Diego Inácio" />
-  <meta name="description" property="og:description" content="Interactive pseudo Depth of Field effect." />
-  <meta name="image" property="og:image" content="thumb.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <!-- /! custom meta tags -->
+    <script type="text/javascript" src="../script.js"></script>
+  </head>
 
-  <link type="text/css" rel="stylesheet" href="../style.css">
-  <style>
-    #svg-experiment {
-      background: radial-gradient(rgb(80, 88, 85), rgb(41, 34, 28));
-    }
-  </style>
+  <body class="experiment">
+    <div class="wrapper">
+      <!-- ! GitHub Corner -->
+      <div
+        class="github-corner light"
+        href="https://github.com/diegoinacio/svg-experiments/blob/master/svg-experiment-005"
+      ></div>
 
-  <script type="text/javascript" src="../script.js"></script>
-</head>
+      <!-- ! Experiment -->
+      <div id="svg-experiment"></div>
+      <script type="text/javascript" src="script.js"></script>
 
-
-<body class="experiment">
-
-  <div class="wrapper">
-
-    <!-- ! GitHub Corner -->
-    <div class="github-corner light" href="https://github.com/diegoinacio/svg-experiments/blob/master/svg-experiment-005"></div>
-
-    <!-- ! Experiment -->
-    <div id="svg-experiment"></div>
-    <script type="text/javascript" src="script.js"></script>
-
-    <!-- ! Description -->
-    <div class="description light">
-      <!-- <p>🖱️ <em>Click</em> on the bubbles to change the focus.</p>
-      <p>↕️ <em>Click and drag</em> to change the focus intensity.</p> -->
-      <table>
-        <tr>
-          <td>👇🏾</td>
-          <td><em>Click</em> on the bubbles to change the focus.</td>
-        </tr>
-        <tr>
-          <td>🌠</td>
-          <td><em>Click and drag</em> to change the focus intensity.</td>
-        </tr>
-      </table>
+      <!-- ! Description -->
+      <div class="description light">
+        <table>
+          <tr>
+            <td>👇🏾</td>
+            <td><em>Click</em> on the bubbles to change the focus.</td>
+          </tr>
+          <tr>
+            <td>🌠</td>
+            <td><em>Click and drag</em> to change the focus intensity.</td>
+          </tr>
+        </table>
+      </div>
     </div>
 
-  </div>
-
-  <!-- ! External scripts -->
-  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
-
-</body>
-
+    <!-- ! External scripts -->
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+  </body>
 </html>

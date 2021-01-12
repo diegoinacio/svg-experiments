@@ -8,15 +8,27 @@ let DEFS = document.createElementNS(_SVG_NS, "defs");
 DIV.appendChild(SVG);
 
 // ! Global variables
+let filterURL, filterID, SELECTED;
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
 
 // ! Parameters
-const maxDepth = 64;
-const stdMultiplier = 20;
-const numCircles = 64;
-const minRadius = 16;
-const maxRadius = 64;
+let minRadius = Math.min(WIDTH, HEIGHT) / 32;
+let maxRadius = Math.min(WIDTH, HEIGHT) / 12;
+let numCircles = parseInt(Math.sqrt(WIDTH * HEIGHT) / 16);
+let maxDepth = parseInt(Math.sqrt(numCircles));
+let stdMultiplier = 32;
+let stdMin = 8;
+let stdMax = 64;
+
+// ! Init mouse position object
+let MOUSE = {
+  x: 0, // ? Position x
+  y: 0, // ? Position y
+  moving: false, // ? Indicate if mouse is moving or not
+};
+
+const isTouch = window.mobileAndTabletCheck();
 
 // ! Utils
 function randomColor() {
@@ -53,15 +65,80 @@ function setAttributes(element, attributes) {
   }
 }
 
+// ! Event functions
+window.addEventListener(isTouch ? "touchstart" : "mousedown", dragStartEvent);
+
+function dragStartEvent(event) {
+  // ? Event which deal with the initial aspects of click down
+  // * Mouse position just after mouse down
+  MOUSE.x = isTouch ? event.touches[0].clientX : event.clientX;
+  MOUSE.y = isTouch ? event.touches[0].clientY : event.clientY;
+
+  SELECTED = event.target;
+
+  // * Start other events
+  window.addEventListener(isTouch ? "touchmove" : "mousemove", dragMoveEvent);
+  window.addEventListener(isTouch ? "touchend" : "mouseup", dragStopEvent);
+}
+
+function dragMoveEvent(event) {
+  // ? Event which deal with mouse movement after mouse down
+  // * Get mouse position on screen during movement
+  let cx = isTouch ? event.touches[0].clientX : event.clientX;
+  let cy = isTouch ? event.touches[0].clientY : event.clientY;
+  let dx = MOUSE.x - cx;
+  let dy = MOUSE.y - cy;
+
+  stdMultiplier += dy / 16;
+  stdMultiplier =
+    stdMultiplier < stdMin
+      ? stdMin
+      : stdMultiplier > stdMax
+      ? stdMax
+      : stdMultiplier;
+  changeBlur();
+
+  // * Indicate that mouse is moving
+  MOUSE.moving = true;
+}
+
+function dragStopEvent(event) {
+  // ? Event which deals with the initial aspects of click up
+  // * Remove svg events from "dragStartEvent"
+  window.removeEventListener(
+    isTouch ? "touchmove" : "mousemove",
+    dragMoveEvent
+  );
+  window.removeEventListener(isTouch ? "touchend" : "mouseup", dragStopEvent);
+
+  if (!MOUSE.moving && SELECTED !== SVG) {
+    changeFocus(SELECTED);
+  }
+
+  // * Turn off mouse movement
+  MOUSE.moving = false;
+}
+
+function changeBlur() {
+  // ! Change gaussian blur parameters
+  let FILTERS = DEFS.querySelectorAll("filter");
+  FILTERS.forEach((filter) => {
+    let filterID_ = parseInt(filter.id.match(/f(\d*)/)[1]);
+    let std = Math.pow((filterID - filterID_) / maxDepth, 2);
+    let blur = filter.querySelector(":scope feGaussianBlur");
+    blur.setAttribute("stdDeviation", std * stdMultiplier);
+  });
+}
+
 function changeFocus(element) {
   // ! Change focus
-  filterURL = element.currentTarget.getAttribute("filter");
+  filterURL = element.getAttribute("filter");
   filterID = parseInt(filterURL.match(/f(\d*)/)[1]);
   let FILTERS = DEFS.querySelectorAll("filter");
   FILTERS.forEach((filter) => {
     let filterID_ = parseInt(filter.id.match(/f(\d*)/)[1]);
-    let blur = filter.querySelector(":scope feGaussianBlur");
     let std = Math.pow((filterID - filterID_) / maxDepth, 2);
+    let blur = filter.querySelector(":scope feGaussianBlur");
     gsap.to(blur, {
       duration: 0.75,
       attr: { stdDeviation: std * stdMultiplier },
@@ -79,6 +156,9 @@ function setSVG() {
 
 function defineFilters() {
   // ! Define filters
+  let focus = Math.random();
+  filterID = parseInt(focus * maxDepth);
+  focus = filterID / maxDepth;
   for (let i = 0; i < maxDepth; i++) {
     // * Filter
     let filter = document.createElementNS(_SVG_NS, "filter");
@@ -94,7 +174,6 @@ function defineFilters() {
     // * Gaussian blur
     let blur = document.createElementNS(_SVG_NS, "feGaussianBlur");
     blur.setAttribute("in", "SourceGraphic");
-    let focus = Math.random();
     let std = Math.pow(focus - i / maxDepth, 2);
     blur.setAttribute("stdDeviation", std * stdMultiplier);
     filter.appendChild(blur);
@@ -127,7 +206,6 @@ function drawCircles() {
       filter: `url(#f${parseInt(maxDepth * (1 - i / numCircles))})`,
     };
     setAttributes(circle, attributes);
-    circle.addEventListener("mouseover", changeFocus);
     SVG.appendChild(circle);
   }
 }
@@ -150,5 +228,11 @@ main();
 window.addEventListener("resize", (event) => {
   WIDTH = window.innerWidth;
   HEIGHT = window.innerHeight;
+
+  minRadius = Math.min(WIDTH, HEIGHT) / 32;
+  maxRadius = Math.min(WIDTH, HEIGHT) / 12;
+  numCircles = parseInt(Math.sqrt(WIDTH * HEIGHT) / 16);
+  maxDepth = parseInt(Math.sqrt(numCircles));
+
   main();
 });
