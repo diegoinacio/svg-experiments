@@ -18,8 +18,16 @@ const MOUSE = {
 let CIRCLES = [];
 
 // ! Parameters
-const MAX_OFFSET = 256; // Maximum parallax offset
-const N = 512; // Number of bokehs
+// * Number of bokehs
+let N = parseInt(Math.sqrt(WIDTH * HEIGHT) / 2);
+// * Maximum parallax offset
+let MAX_OFFSET = Math.max(WIDTH, HEIGHT) / 4;
+// * Circles
+const radiusMin = 5;
+let radiusMax = Math.min(WIDTH, HEIGHT) / 48;
+let radiusDepth = radiusMax * 4;
+
+const isTouch = window.mobileAndTabletCheck();
 
 // ! Utils
 function randomColor() {
@@ -56,7 +64,7 @@ class Circle {
     this.cy_ = this.cy;
 
     // * Define radius randomly
-    this.r = (1 - depth) * 40 + Math.random() * 15 + 5;
+    this.r = (1 - depth) * radiusDepth + Math.random() * radiusMax + radiusMin;
     this.circle.setAttribute("r", this.r);
 
     // * Set attributes
@@ -143,16 +151,19 @@ function main() {
 main();
 
 // ! Event listeners
-window.addEventListener("mousemove", (event) => {
+window.addEventListener(isTouch ? "touchmove" : "mousemove", (event) => {
   let RECT = DIV.getBoundingClientRect();
 
+  let clientX = isTouch ? event.touches[0].clientX : event.clientX;
+  let clientY = isTouch ? event.touches[0].clientY : event.clientY;
+
   // * Relative x
-  MOUSE.x = event.clientX - RECT.left;
+  MOUSE.x = clientX - RECT.left;
   MOUSE.x /= RECT.right - RECT.left;
   MOUSE.x = MOUSE.x * WIDTH;
 
   // * Relative y
-  MOUSE.y = event.clientY - RECT.top;
+  MOUSE.y = clientY - RECT.top;
   MOUSE.y /= RECT.bottom - RECT.top;
   MOUSE.y = MOUSE.y * HEIGHT;
 });
@@ -160,5 +171,11 @@ window.addEventListener("mousemove", (event) => {
 window.addEventListener("resize", () => {
   WIDTH = window.innerWidth;
   HEIGHT = window.innerHeight;
+
+  N = parseInt(Math.sqrt(WIDTH * HEIGHT) / 2);
+  MAX_OFFSET = Math.max(WIDTH, HEIGHT) / 4;
+  radiusMax = Math.min(WIDTH, HEIGHT) / 48;
+  radiusDepth = radiusMax * 4;
+
   main();
 });
