@@ -53,8 +53,6 @@ body.index .wrapper .signature a {
 
 body.index .wrapper .signature a:hover {
   color: red;
-  -webkit-transition: color 0.5s;
-  transition: color 0.5s;
 }
 
 body.index .wrapper .section .item {
@@ -101,6 +99,23 @@ body.index .wrapper .section .item a:hover {
   /* * backdrop filtering */
   -webkit-backdrop-filter: blur(0px) saturate(1) contrast(1);
   backdrop-filter: blur(0px) saturate(1) contrast(1);
+}
+
+body.index .wrapper #footer .copyright {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+body.index .wrapper #footer .copyright a {
+  color: red;
+  text-decoration: none;
+  font-weight: 600;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+
+body.index .wrapper #footer .copyright a:hover {
+  color: black;
 }
 
 @media only screen and (max-width: 800px) {
