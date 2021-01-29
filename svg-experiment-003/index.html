@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <title>Parallax Bokeh</title>
 
+    <!-- ! meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Diego Inácio" />
+    <meta
+      property="og:url"
+      content="https://diegoinacio.github.io/svg-experiments/svg-experiment-003/index.html"
+    />
+    <meta
+      name="title"
+      property="og:title"
+      content="Parallax Bokeh >> SVG Experiments | Diego Inácio"
+    />
+    <meta
+      name="description"
+      property="og:description"
+      content="Interactive Bokeh effect with parallax illusion."
+    />
+    <meta name="image" property="og:image" content="thumb.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <!-- /! custom meta tags -->
 
-<head>
-  <title>Parallax Bokeh</title>
+    <link type="text/css" rel="stylesheet" href="../style.css" />
+    <style>
+      #svg-experiment {
+        background-color: #122;
+      }
+    </style>
 
-  <!-- ! meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Diego Inácio" />
-  <meta property="og:url" content="https://diegoinacio.github.io/svg-experiments/svg-experiment-003/index.html" />
-  <meta name="title" property="og:title" content="Parallax Bokeh >> SVG Experiments | Diego Inácio" />
-  <meta name="description" property="og:description" content="Interactive Bokeh effect with parallax illusion." />
-  <meta name="image" property="og:image" content="thumb.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <!-- /! custom meta tags -->
+    <script type="text/javascript" src="../script.js"></script>
+  </head>
 
-  <link type="text/css" rel="stylesheet" href="../style.css">
-  <style>
-    #svg-experiment {
-      background-color: #122;
-    }
-  </style>
+  <body class="experiment">
+    <div class="wrapper">
+      <!-- ! GitHub Corner -->
+      <div
+        class="github-corner light"
+        href="https://github.com/diegoinacio/svg-experiments/blob/master/svg-experiment-003"
+      ></div>
 
-  <script type="text/javascript" src="../script.js"></script>
-</head>
+      <!-- ! Experiment -->
+      <div id="svg-experiment"></div>
+      <script type="text/javascript" src="script.js"></script>
 
-
-<body class="experiment">
-
-  <div class="wrapper">
-
-    <!-- ! GitHub Corner -->
-    <div class="github-corner light" href="https://github.com/diegoinacio/svg-experiments/blob/master/svg-experiment-003"></div>
-
-    <!-- ! Experiment -->
-    <div id="svg-experiment"></div>
-    <script type="text/javascript" src="script.js"></script>
-
-    <!-- ! Description -->
-    <div class="description light">
-      <table>
-        <tbody>
-          <tr>
-            <td>💫</td>
-            <td><em>Move</em> to see the parallax effect.</td>
-          </tr>
-        </tbody>
-      </table>
+      <!-- ! Description -->
+      <div class="description light">
+        <table>
+          <tbody>
+            <tr>
+              <td>💫</td>
+              <td><em>Move</em> to see the parallax effect.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-  </div>
-
-</body>
-
+  </body>
 </html>
