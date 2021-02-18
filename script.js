@@ -58,8 +58,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (!window.mobileAndTabletCheck()) {
     // * Include full screen messa for non-mobile
     let tr = document.createElement("tr");
-    tr.innerHTML =
-      "<td>🖥️</td> <td><em>Press <b>F11</b></em> to toggle to <em>full screen</em>.</td>";
+    tr.innerHTML = `<td>🖥️</td> <td><em class="command">Press <b>F11</b></em> to toggle to <em>full screen</em>.</td>`;
     tbody.appendChild(tr);
   }
 
