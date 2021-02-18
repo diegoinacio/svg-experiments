@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap");
 
 // ! Global variables
 $bg-index: white;
@@ -176,6 +177,9 @@ body.experiment {
   overflow: hidden;
 
   .wrapper {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+
     .description {
       transition: 0.5s ease;
       opacity: 0;
@@ -191,15 +195,35 @@ body.experiment {
         bottom: 5px;
       }
 
+      a {
+        color: red;
+        text-decoration: none;
+        font-weight: 900;
+        transition: color 0.5s;
+
+        &:hover {
+          color: black;
+        }
+      }
+
+      b {
+        font-weight: 900;
+      }
+
       table {
         margin-top: 1.5em;
 
         tr {
           td:first-child {
             text-align: center;
+            vertical-align: text-top;
             padding-right: 0.25em;
           }
         }
+      }
+
+      .command {
+        font-weight: 500;
       }
 
       .top-tab {

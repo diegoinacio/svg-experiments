@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap");
 /* ! Reset all elements */
 * {
   margin: 0;
@@ -159,6 +160,11 @@ body.experiment {
   overflow: hidden;
 }
 
+body.experiment .wrapper {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
 body.experiment .wrapper .description {
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
@@ -176,13 +182,34 @@ body.experiment .wrapper .description[visible] {
   bottom: 5px;
 }
 
+body.experiment .wrapper .description a {
+  color: red;
+  text-decoration: none;
+  font-weight: 900;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+
+body.experiment .wrapper .description a:hover {
+  color: black;
+}
+
+body.experiment .wrapper .description b {
+  font-weight: 900;
+}
+
 body.experiment .wrapper .description table {
   margin-top: 1.5em;
 }
 
 body.experiment .wrapper .description table tr td:first-child {
   text-align: center;
+  vertical-align: text-top;
   padding-right: 0.25em;
+}
+
+body.experiment .wrapper .description .command {
+  font-weight: 500;
 }
 
 body.experiment .wrapper .description .top-tab {
