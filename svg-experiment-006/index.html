@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="alternate icon" href="../favicon.ico" />
+    <title>CellAuto</title>
+
+    <!-- ! meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Diego Inácio" />
+    <meta
+      property="og:url"
+      content="https://diegoinacio.github.io/svg-experiments/svg-experiment-006/index.html"
+    />
+    <meta
+      name="title"
+      property="og:title"
+      content="CellAuto >> SVG Experiments | Diego Inácio"
+    />
+    <meta
+      name="description"
+      property="og:description"
+      content="Parameterized one-dimensional cellular automaton."
+    />
+    <meta name="image" property="og:image" content="thumb.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <!-- /! custom meta tags -->
+
+    <link type="text/css" rel="stylesheet" href="../style.css" />
+    <style>
+      #svg-experiment {
+        background: radial-gradient(hsl(0, 50%, 10%), hsl(180, 50%, 10%));
+      }
+
+      input {
+        width: 4em;
+      }
+    </style>
+
+    <script type="text/javascript" src="../script.js"></script>
+  </head>
+
+  <body class="experiment">
+    <div class="wrapper">
+      <!-- ! GitHub Corner -->
+      <div
+        class="github-corner light"
+        href="https://github.com/diegoinacio/svg-experiments/blob/master/svg-experiment-006"
+      ></div>
+
+      <!-- ! Description -->
+      <div class="description light">
+        <table>
+          <tr>
+            <td>🧮</td>
+            <td>
+              Select the <em class="command">rule</em>
+              <select name="rule" id="rule" onchange="select_rule()">
+                <option value="18">rule 18</option>
+                <option value="75">rule 75</option>
+                <option value="106">rule 106</option>
+                <option value="126">rule 126</option>
+                <option value="165">rule 165</option>
+                <option value="225" selected="selected">rule 225</option>
+                <option value="0">custom rule</option>
+              </select>
+              <input
+                type="text"
+                id="c_rule"
+                name="c_rule"
+                onchange="select_rule_custom()"
+                disabled
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>↔️</td>
+            <td>
+              Select <em class="command">neighborhood</em>
+              <select name="radius" id="radius" onchange="select_radius()">
+                <option value="1" selected="selected">radius 1</option>
+                <option value="2">radius 2</option>
+                <option value="3">radius 3</option>
+                <option value="0">custom radius</option>
+              </select>
+              <input
+                type="text"
+                id="c_radius"
+                name="c_radius"
+                onchange="select_radius_custom()"
+                disabled
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>↗️</td>
+            <td>
+              Select <em class="command">cell size</em>
+              <select name="size" id="size" onchange="select_size()">
+                <option value="4">4</option>
+                <option value="8" selected="selected">8</option>
+                <option value="12">12</option>
+                <option value="16">16</option>
+                <option value="32">32</option>
+                <option value="0">custom size</option>
+              </select>
+              <input
+                type="text"
+                id="c_size"
+                name="c_size"
+                onchange="select_size_custom()"
+                disabled
+              />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- ! Experiment -->
+      <div id="svg-experiment"></div>
+      <script type="text/javascript" src="script.js"></script>
+    </div>
+
+    <!-- ! External scripts -->
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+  </body>
+</html>
