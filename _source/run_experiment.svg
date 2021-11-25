@@ -19,7 +19,7 @@
   </defs>
   <title>run_experiment</title>
   <g id="button">
-    <rect class="bg" width="80" height="16" rx="6" />
+    <rect class="bg" x="2" y="2" width="76" height="12" rx="6" />
     <text class="text" text-anchor="middle" transform="translate(7 10)">
       >
       <animateTransform attributeName="transform" attributeType="XML" type="translate" repeatCount="indefinite"
