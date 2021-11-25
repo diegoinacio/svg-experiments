@@ -5,6 +5,7 @@
         fill: black;
         stroke: gray;
         stroke-width: 1px;
+        stroke-width: 0.03em;
         stroke-dasharray: 2px;
         stroke-linecap: round;
       }
