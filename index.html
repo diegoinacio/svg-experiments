@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="alternate icon" href="favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="assets/icon/favicon.svg" />
+    <link rel="alternate icon" href="assets/icon/favicon.ico" />
     <title>SVG Experiments</title>
 
     <!-- ! meta tags -->
@@ -21,13 +21,17 @@
     <meta
       name="description"
       property="og:description"
-      content="Gallery of experiments with Scalable Vector Graphics (SVGs)."
+      content="A gallery of experiments with Scalable Vector Graphics (SVG) and interactive visualizations."
     />
-    <meta name="image" property="og:image" content="social-preview.png" />
+    <meta
+      name="image"
+      property="og:image"
+      content="assets/img/social-preview.png"
+    />
     <meta property="og:image:type" content="image/png" />
     <!-- /! custom meta tags -->
 
-    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
   </head>
 
   <body class="index">
@@ -56,7 +60,7 @@
         <div
           class="item"
           style="
-            --bgi: url(svg-experiment-006/thumb.jpg);
+            --bgi: url(../../svg-experiment-006/thumb.jpg);
             --color: salmon;
             --stroke: cyan;
           "
@@ -74,7 +78,7 @@
         <div
           class="item"
           style="
-            --bgi: url(svg-experiment-005/thumb.jpg);
+            --bgi: url(../../svg-experiment-005/thumb.jpg);
             --color: crimson;
             --stroke: yellow;
           "
@@ -92,7 +96,7 @@
         <div
           class="item"
           style="
-            --bgi: url(svg-experiment-004/thumb.jpg);
+            --bgi: url(../../svg-experiment-004/thumb.jpg);
             --color: darkcyan;
             --stroke: lightgreen;
           "
@@ -110,7 +114,7 @@
         <div
           class="item"
           style="
-            --bgi: url(svg-experiment-003/thumb.jpg);
+            --bgi: url(../../svg-experiment-003/thumb.jpg);
             --color: coral;
             --stroke: white;
           "
@@ -128,7 +132,7 @@
         <div
           class="item"
           style="
-            --bgi: url(svg-experiment-002/thumb.jpg);
+            --bgi: url(../../svg-experiment-002/thumb.jpg);
             --color: darkslategray;
             --stroke: bisque;
           "
@@ -146,7 +150,7 @@
         <div
           class="item"
           style="
-            --bgi: url(svg-experiment-001/thumb.jpg);
+            --bgi: url(../../svg-experiment-001/thumb.jpg);
             --color: black;
             --stroke: white;
           "
@@ -176,7 +180,7 @@
       document.querySelector("footer#footer").innerHTML = `
       <p class="copyright">
         © ${YEAR_FOOTER} Diego Inácio. <br />
-        <a href="https://${PAGE_LINK}/" target="_blank">${PAGE_LINK}</a>
+        <a href="https://${PAGE_LINK}/" target="_blank" title="my personal website">${PAGE_LINK}</a>
       </p>
       `;
     </script>
