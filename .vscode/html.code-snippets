@@ -22,7 +22,7 @@
       "<!-- * Init item -->",
       "<!-- ? SVG Experiment ${1:000} -->",
       "<div class=\"item\" style=\"",
-      "  --bgi: url(svg-experiment-${1:000}/thumb.jpg);",
+      "  --bgi: url(../../svg-experiment-${1:000}/thumb.jpg);",
       "  --color: black;",
       "  --stroke: white;",
       "\">",
