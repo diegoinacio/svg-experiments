@@ -1,10 +1,10 @@
 # SVG Experiments
 
-[![preview](social-preview.png)](https://diegoinacio.github.io/svg-experiments/)
+[![preview](assets/img/social-preview.png)](https://diegoinacio.github.io/svg-experiments/)
 
-A [gallery](https://diegoinacio.github.io/svg-experiments/) of experiments with _Scalable Vector Graphics_ (SVGs) and interactive visualizations.
+A [gallery](https://diegoinacio.github.io/svg-experiments/) of experiments with _Scalable Vector Graphics_ (SVG) and interactive visualizations.
 
-[![visit page](_source/visit_page.svg)](https://diegoinacio.github.io/svg-experiments/)
+[![visit page](assets/icon/visit_page.svg)](https://diegoinacio.github.io/svg-experiments/)
 
 ## List of experiments
 
