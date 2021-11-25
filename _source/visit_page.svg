@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 16" width="200px">
+  <defs>
+    <style>
+      .bg {
+        fill: white;
+        stroke: gray;
+        stroke-width: 1px;
+        stroke-dasharray: 2px;
+        stroke-linecap: round;
+      }
+
+      .bg:hover {
+        fill: red;
+      }
+
+      .text {
+        font-size: 7px;
+        fill: black;
+        font-family: CourierNewPS-BoldMT, Courier New;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <title>visit_page</title>
+  <g id="button">
+    <rect class="bg" width="80" height="16" rx="6" />
+    <text class="text" text-anchor="middle" transform="translate(7 10)">
+      >
+      <animateTransform attributeName="transform" attributeType="XML" type="translate" repeatCount="indefinite"
+        values="5 10; 9 10; 5 10; 9 10; 7 10; 7 10" keyTimes="0; 0.09; 0.1; 0.19; 0.2; 1" dur="2s" />
+    </text>
+    <text class="text" text-anchor="middle" transform="translate(44 10)">visit page</text>
+  </g>
+</svg>
