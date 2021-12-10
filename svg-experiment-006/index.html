@@ -34,7 +34,7 @@
       }
 
       input {
-        width: 4em;
+        width: 5em;
       }
     </style>
 
@@ -55,8 +55,13 @@
           <tr>
             <td>🧮</td>
             <td>
-              Select the <em class="command">rule</em>
-              <select name="rule" id="rule" onchange="select_rule()">
+              Select the <em class="command">rule</em> <br />
+              <select
+                name="rule"
+                id="rule"
+                onClick="stop_propagation()"
+                onChange="select_rule()"
+              >
                 <option value="18">rule 18</option>
                 <option value="75">rule 75</option>
                 <option value="106">rule 106</option>
@@ -69,7 +74,8 @@
                 type="text"
                 id="c_rule"
                 name="c_rule"
-                onchange="select_rule_custom()"
+                onClick="stop_propagation()"
+                onChange="select_rule_custom()"
                 disabled
               />
             </td>
@@ -77,8 +83,13 @@
           <tr>
             <td>↔️</td>
             <td>
-              Select <em class="command">neighborhood</em>
-              <select name="radius" id="radius" onchange="select_radius()">
+              Select <em class="command">neighborhood</em> <br />
+              <select
+                name="radius"
+                id="radius"
+                onClick="stop_propagation()"
+                onChange="select_radius()"
+              >
                 <option value="1" selected="selected">radius 1</option>
                 <option value="2">radius 2</option>
                 <option value="3">radius 3</option>
@@ -88,7 +99,8 @@
                 type="text"
                 id="c_radius"
                 name="c_radius"
-                onchange="select_radius_custom()"
+                onClick="stop_propagation()"
+                onChange="select_radius_custom()"
                 disabled
               />
             </td>
@@ -96,8 +108,13 @@
           <tr>
             <td>↗️</td>
             <td>
-              Select <em class="command">cell size</em>
-              <select name="size" id="size" onchange="select_size()">
+              Select <em class="command">cell size</em> <br />
+              <select
+                name="size"
+                id="size"
+                onClick="stop_propagation()"
+                onChange="select_size()"
+              >
                 <option value="4">4</option>
                 <option value="8" selected="selected">8</option>
                 <option value="12">12</option>
@@ -109,7 +126,8 @@
                 type="text"
                 id="c_size"
                 name="c_size"
-                onchange="select_size_custom()"
+                onClick="stop_propagation()"
+                onChange="select_size_custom()"
                 disabled
               />
             </td>

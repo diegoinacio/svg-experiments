@@ -49,6 +49,11 @@ function setAttributes(element, attributes) {
 }
 
 // ! Event functions
+// * Stop propagation when click on input
+function stop_propagation() {
+  event.stopPropagation();
+}
+
 // * Rule parameter events
 function select_rule() {
   // ! Set rule
