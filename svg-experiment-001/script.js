@@ -15,8 +15,9 @@ let CENTER = { x: WIDTH / 2, y: HEIGHT / 2 };
 
 let minimumRadius = Math.min(WIDTH, HEIGHT) / 100;
 
-// ! Parameters
-const THETA_VAR = 0.02; // Theta variance factor
+// ! Parameters (from index page)
+const theta_factor = document.querySelector("input#theta_factor");
+let THETA_VAR = parseFloat(theta_factor.value);
 
 // ! Drop Shadow
 if (!window.mobileAndTabletCheck()) {
@@ -64,6 +65,35 @@ function randomColor() {
   // * Output
   return `rgb(${r}, ${g}, ${b})`;
 }
+
+// ! Event functions
+// * Stop propagation when click on input
+function stop_propagation() {
+  event.stopPropagation();
+}
+
+// * Theta factor parameter events
+function set_theta_factor() {
+  THETA_VAR = parseFloat(theta_factor.value);
+  main();
+}
+
+// * Change center/axis
+window.addEventListener("click", (event) => {
+  CENTER.x = event.clientX;
+  CENTER.y = event.clientY;
+  main();
+});
+
+// * Resize window
+window.addEventListener("resize", () => {
+  WIDTH = window.innerWidth;
+  HEIGHT = window.innerHeight;
+  CENTER.x = WIDTH / 2;
+  CENTER.y = HEIGHT / 2;
+  minimumRadius = Math.min(WIDTH, HEIGHT) / 100;
+  main();
+});
 
 // ! Build functions
 function setSVG() {
@@ -201,7 +231,7 @@ function draw() {
     rect.setAttribute("fill", randomColor());
 
     // * Increase theta and define phi randomly
-    theta += phi = 2 * Math.PI * (Math.random() * 2 - 1) * THETA_VAR;
+    theta += phi = Math.PI * (Math.random() * 2 - 1) * THETA_VAR;
     phi_a = Math.abs(phi);
 
     // * Find the opposite of phi based on the inscribed square
@@ -233,19 +263,3 @@ function main() {
 }
 
 main();
-
-// ! Event listeners
-window.addEventListener("click", (event) => {
-  CENTER.x = event.clientX;
-  CENTER.y = event.clientY;
-  main();
-});
-
-window.addEventListener("resize", () => {
-  WIDTH = window.innerWidth;
-  HEIGHT = window.innerHeight;
-  CENTER.x = WIDTH / 2;
-  CENTER.y = HEIGHT / 2;
-  minimumRadius = Math.min(WIDTH, HEIGHT) / 100;
-  main();
-});

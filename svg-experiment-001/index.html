@@ -47,9 +47,25 @@
 
       <!-- ! Description -->
       <div class="description light">
-        <!-- <p>👇🏾 <em>Click</em> to change the position of the center/axis.</p> -->
         <table>
           <tbody>
+            <tr>
+              <td>🌈</td>
+              <td>
+                Define the <em class="command">theta factor</em> <br />
+                <input
+                  type="number"
+                  id="theta_factor"
+                  name="theta_factor"
+                  value="0.05"
+                  step="0.01"
+                  min="0.01"
+                  max="0.5"
+                  onClick="stop_propagation()"
+                  onChange="set_theta_factor()"
+                />
+              </td>
+            </tr>
             <tr>
               <td>👇🏾</td>
               <td>
