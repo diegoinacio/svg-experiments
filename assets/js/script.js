@@ -74,26 +74,28 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // * Include description box
   let description = document.querySelector(".description");
-  let tbody = description.querySelector(":scope table tbody");
+  if (description) {
+    let tbody = description.querySelector("table tbody");
 
-  if (!window.mobileAndTabletCheck()) {
-    // * Include full screen messa for non-mobile
-    let tr = document.createElement("tr");
-    tr.innerHTML = `<td>🖥️</td> <td><em class="command">Press <b>F11</b></em> to toggle to <em>full screen</em>.</td>`;
-    tbody.appendChild(tr);
+    if (!window.mobileAndTabletCheck()) {
+      // * Include full screen messa for non-mobile
+      let tr = document.createElement("tr");
+      tr.innerHTML = `<td>🖥️</td> <td><em class="command">Press <b>F11</b></em> to toggle to <em>full screen</em>.</td>`;
+      tbody.appendChild(tr);
+    }
+
+    let div = document.createElement("div");
+    div.className = "top-tab";
+    div.innerHTML = `<a href="#" class="close" title="Close description"></a>`;
+    description.appendChild(div);
+
+    setTimeout(() => {
+      description.setAttribute("visible", "");
+    }, 2000);
+
+    description.querySelector(".close").addEventListener("click", (event) => {
+      event.stopPropagation();
+      description.removeAttribute("visible");
+    });
   }
-
-  let div = document.createElement("div");
-  div.className = "top-tab";
-  div.innerHTML = `<a href="#" class="close" title="Close description"></a>`;
-  description.appendChild(div);
-
-  setTimeout(() => {
-    description.setAttribute("visible", "");
-  }, 2000);
-
-  description.querySelector(".close").addEventListener("click", (event) => {
-    event.stopPropagation();
-    description.removeAttribute("visible");
-  });
 });
