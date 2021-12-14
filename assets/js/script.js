@@ -34,22 +34,43 @@ window.mobileAndTabletCheck = function () {
 
 // ! Document functionalities
 window.addEventListener("DOMContentLoaded", () => {
+  // * Include Return Corner
+  const RETURN_CORNER = document.querySelector(".return-corner");
+  if (RETURN_CORNER) {
+    const HREF_RC = "https://diegoinacio.github.io/svg-experiments/";
+
+    RETURN_CORNER.innerHTML = `
+      <svg viewbox="0 0 250 250">
+        <a href="${HREF_RC}" target="_blank">
+          <title>Return to SVG Experiments</title>
+          <circle class="bg" cx="125" cy="125" r="115" />
+          <polyline class="arrow" points="146.5 62.5 83.5 125 146 187.5" />
+        </a>
+      </svg>
+    `;
+  }
+
   // * Include GitHub Corner
   const GITHUB_CORNER = document.querySelector(".github-corner");
-  const CLASS = GITHUB_CORNER.className.split(" ");
-  const HREF = GITHUB_CORNER.getAttribute("href");
+  if (GITHUB_CORNER) {
+    const CLASS_GC = GITHUB_CORNER.className.split(" ");
+    const HREF_GC = GITHUB_CORNER.getAttribute("href");
 
-  let title = CLASS[1] == "index" ? "Visit the repository" : "Source code";
+    let title = CLASS_GC[1] == "index" ? "Visit the repository" : "Source code";
 
-  GITHUB_CORNER.innerHTML = `
-  <svg viewbox="0 0 250 250">
-    <a href="${HREF}" target="_blank">
-      <title>${title}</title>
-      <path d="M10 0h250v250"></path>
-      <path class="octo-arm" d="M127.4 110c-14.6-9.2-9.4-19.5-9.4-19.5 3-7 1.5-11 1.5-11-1-6.2 3-2 3-2 4 4.7 2 11 2 11-2.2 10.4 5 14.8 9 16.2" fill="currentColor" style="transform-origin:130px 110px;"></path>
-      <path class="octo-body" d="M113.2 114.3s3.6 1.6 4.7.6l15-13.7c3-2.4 6-3 8.2-2.7-8-11.2-14-25 3-41 4.7-4.4 10.6-6.4 16.2-6.4.6-1.6 3.6-7.3 11.8-10.7 0 0 4.5 2.7 6.8 16.5 4.3 2.7 8.3 6 12 9.8 3.3 3.5 6.7 8 8.6 12.3 14 3 16.8 8 16.8 8-3.4 8-9.4 11-11.4 11 0 5.8-2.3 11-7.5 15.5-16.4 16-30 9-40 .2 0 3-1 7-5.2 11l-13.3 11c-1 1 .5 5.3.8 5z" fill="currentColor"></path>
-    </a>
-  </svg>`;
+    GITHUB_CORNER.innerHTML = `
+      <svg viewbox="0 0 250 250">
+        <a href="${HREF_GC}" target="_blank">
+          <title>${title}</title>
+          <circle class="bg" cx="125" cy="125" r="115" />
+          <g transform="translate(10 10)">
+            <path class="octo-arm" d="M99.89,213.43c-32.73,7.42-39.74-13.89-39.74-13.89-5.5-13.75-13.07-17.19-13.07-17.19-9.9-7.15,1.38-6.87,1.38-6.87,12,1,17.87,12.37,17.87,12.37,11.28,17.33,27.23,13.48,34.66,9.9" fill="currentColor" style="transform-origin:90px 200px;"></path>
+            <path class="octo-body" d="M85.42,240s7.15-2.75,7.29-5.64L94.5,194.9c.82-7.43,4.12-12.38,7.56-15-26.4-4.4-53.63-15.12-52.25-60.5A46,46,0,0,1,63.28,88.33c-1.37-3-5.08-15,1.52-30.93,0,0,9.9-2.48,32,13.33a126.59,126.59,0,0,1,30-3c9.35.27,20.21,1.79,28.74,5.09,23.37-15.13,34.1-12.1,34.1-12.1,6.32,15.67,2.2,28.05-.55,30.8,8,8,12,18.29,11,31.62-.55,44.55-28.88,53.63-54.73,55.28,4.13,4.12,8.25,11,8,22.27l-3.16,33.42c0,2.75,8,6.6,8,5.77Z" transform="translate(-10 -10)" fill="currentColor"></path>
+          </g>
+        </a>
+      </svg>
+    `;
+  }
 
   // * Include description box
   let description = document.querySelector(".description");
