@@ -261,45 +261,76 @@ body.experiment .wrapper .description.dark .close:hover {
   background-color: white;
 }
 
+/* ! Return Corner */
+@-webkit-keyframes arrow-shake {
+  0%,
+  100% {
+    -webkit-transform: translate(0 0);
+            transform: translate(0 0);
+  }
+  20%,
+  60% {
+    -webkit-transform: translate(10px);
+            transform: translate(10px);
+  }
+  40%,
+  80% {
+    -webkit-transform: translate(-10px);
+            transform: translate(-10px);
+  }
+}
+@keyframes arrow-shake {
+  0%,
+  100% {
+    -webkit-transform: translate(0 0);
+            transform: translate(0 0);
+  }
+  20%,
+  60% {
+    -webkit-transform: translate(10px);
+            transform: translate(10px);
+  }
+  40%,
+  80% {
+    -webkit-transform: translate(-10px);
+            transform: translate(-10px);
+  }
+}
+
+.return-corner {
+  position: fixed;
+  left: 0.1em;
+  top: 0.1em;
+}
+
+.return-corner svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+.return-corner svg a circle,
+.return-corner svg a polyline {
+  fill: black;
+  fill-opacity: 0;
+  stroke-width: 15px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.return-corner svg a:hover .arrow {
+  -webkit-animation: arrow-shake 0.5s;
+          animation: arrow-shake 0.5s;
+}
+
+.return-corner.light svg a {
+  stroke: white;
+}
+
+.return-corner.dark svg a {
+  stroke: black;
+}
+
 /* ! GitHub Corner */
-.github-corner {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.github-corner svg {
-  width: 3.5rem;
-  height: 3.5rem;
-}
-
-.github-corner svg a:hover .octo-arm {
-  -webkit-animation: octocat-wave 0.5s;
-          animation: octocat-wave 0.5s;
-}
-
-.github-corner.index {
-  /* * Without mix-blend-mode because .. */
-  /* * .. it breaks the backdrop filters */
-}
-
-.github-corner.index svg a {
-  color: white;
-  fill: black;
-}
-
-.github-corner.light svg a {
-  mix-blend-mode: screen;
-  color: black;
-  fill: white;
-}
-
-.github-corner.dark svg a {
-  mix-blend-mode: darken;
-  color: white;
-  fill: black;
-}
-
 @-webkit-keyframes octocat-wave {
   0%,
   100% {
@@ -308,16 +339,15 @@ body.experiment .wrapper .description.dark .close:hover {
   }
   20%,
   60% {
-    -webkit-transform: rotate(-20deg);
-            transform: rotate(-20deg);
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
   }
   40%,
   80% {
-    -webkit-transform: rotate(10deg);
-            transform: rotate(10deg);
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
   }
 }
-
 @keyframes octocat-wave {
   0%,
   100% {
@@ -326,13 +356,59 @@ body.experiment .wrapper .description.dark .close:hover {
   }
   20%,
   60% {
-    -webkit-transform: rotate(-20deg);
-            transform: rotate(-20deg);
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
   }
   40%,
   80% {
-    -webkit-transform: rotate(10deg);
-            transform: rotate(10deg);
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
   }
+}
+
+.github-corner {
+  position: fixed;
+  right: 0.1em;
+  top: 0.1em;
+}
+
+.github-corner svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+.github-corner svg a circle {
+  fill: black;
+  fill-opacity: 0;
+  stroke-width: 15px;
+}
+
+.github-corner svg a:hover .octo-arm {
+  -webkit-animation: octocat-wave 0.5s;
+          animation: octocat-wave 0.5s;
+}
+
+.github-corner.index svg a circle {
+  stroke: black;
+}
+
+.github-corner.index svg a path {
+  fill: black;
+}
+
+.github-corner.light svg a circle {
+  stroke: white;
+}
+
+.github-corner.light svg a path {
+  fill: white;
+}
+
+.github-corner.dark svg a circle {
+  stroke: black;
+}
+
+.github-corner.dark svg a path {
+  fill: black;
 }
 /*# sourceMappingURL=style.css.map */

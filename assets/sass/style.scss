@@ -277,17 +277,98 @@ body.experiment {
   }
 }
 
-/* ! GitHub Corner */
-.github-corner {
-  position: absolute;
-  right: 0;
-  top: 0;
+/* ! Return Corner */
+@keyframes arrow-shake {
+  0%,
+  100% {
+    transform: translate(0 0);
+  }
+  20%,
+  60% {
+    transform: translate(10px);
+  }
+  40%,
+  80% {
+    transform: translate(-10px);
+  }
+}
+
+.return-corner {
+  position: fixed;
+  left: 0.1em;
+  top: 0.1em;
 
   svg {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3rem;
+    height: 3rem;
 
     a {
+      circle,
+      polyline {
+        fill: black;
+        fill-opacity: 0;
+        stroke-width: 15px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      &:hover {
+        .arrow {
+          animation: arrow-shake 0.5s;
+        }
+      }
+    }
+  }
+
+  &.light {
+    svg {
+      a {
+        stroke: white;
+      }
+    }
+  }
+
+  &.dark {
+    svg {
+      a {
+        stroke: black;
+      }
+    }
+  }
+}
+
+/* ! GitHub Corner */
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(20deg);
+  }
+  40%,
+  80% {
+    transform: rotate(-10deg);
+  }
+}
+
+.github-corner {
+  position: fixed;
+  right: 0.1em;
+  top: 0.1em;
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+
+    a {
+      circle {
+        fill: black;
+        fill-opacity: 0;
+        stroke-width: 15px;
+      }
+
       &:hover {
         .octo-arm {
           animation: octocat-wave 0.5s;
@@ -297,12 +378,15 @@ body.experiment {
   }
 
   &.index {
-    /* * Without mix-blend-mode because .. */
-    /* * .. it breaks the backdrop filters */
     svg {
       a {
-        color: $bg-index;
-        fill: black;
+        circle {
+          stroke: black;
+        }
+
+        path {
+          fill: black;
+        }
       }
     }
   }
@@ -310,9 +394,13 @@ body.experiment {
   &.light {
     svg {
       a {
-        mix-blend-mode: screen;
-        color: black;
-        fill: white;
+        circle {
+          stroke: white;
+        }
+
+        path {
+          fill: white;
+        }
       }
     }
   }
@@ -320,25 +408,14 @@ body.experiment {
   &.dark {
     svg {
       a {
-        mix-blend-mode: darken;
-        color: white;
-        fill: black;
+        circle {
+          stroke: black;
+        }
+
+        path {
+          fill: black;
+        }
       }
     }
-  }
-}
-
-@keyframes octocat-wave {
-  0%,
-  100% {
-    transform: rotate(0);
-  }
-  20%,
-  60% {
-    transform: rotate(-20deg);
-  }
-  40%,
-  80% {
-    transform: rotate(10deg);
   }
 }
