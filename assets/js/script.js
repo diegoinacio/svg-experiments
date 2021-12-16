@@ -32,6 +32,11 @@ window.mobileAndTabletCheck = function () {
   return check;
 };
 
+// * Stop propagation when click on navigation buttons
+function stop_propagation() {
+  event.stopPropagation();
+}
+
 // ! Document functionalities
 window.addEventListener("DOMContentLoaded", () => {
   // * Include Return Corner
@@ -41,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     RETURN_CORNER.innerHTML = `
       <svg viewbox="0 0 250 250">
-        <a href="${HREF_RC}" target="_blank">
+        <a href="${HREF_RC}" onClick="stop_propagation()" target="_blank">
           <title>Return to SVG Experiments</title>
           <circle class="bg" cx="125" cy="125" r="115" />
           <polyline class="arrow" points="146.5 62.5 83.5 125 146 187.5" />
@@ -60,7 +65,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     GITHUB_CORNER.innerHTML = `
       <svg viewbox="0 0 250 250">
-        <a href="${HREF_GC}" target="_blank">
+        <a href="${HREF_GC}" onClick="stop_propagation()" target="_blank">
           <title>${title}</title>
           <circle class="bg" cx="125" cy="125" r="115" />
           <g transform="translate(10 10)">
