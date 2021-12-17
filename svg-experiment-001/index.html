@@ -33,6 +33,11 @@
         background-color: black;
       }
     </style>
+    <style id="filter-style">
+      svg polygon {
+        filter: url(#drop-shadow);
+      }
+    </style>
 
     <script type="text/javascript" src="../assets/js/script.js"></script>
   </head>
@@ -66,6 +71,22 @@
                   max="0.5"
                   onClick="stop_propagation()"
                   onChange="set_theta_factor()"
+                  title="Define the maximum angle variance in iterations."
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>🌑</td>
+              <td>
+                Toggle <em class="command">drop shadow</em>
+                <input
+                  type="checkbox"
+                  name="drop_shadow"
+                  id="drop_shadow"
+                  onClick="stop_propagation()"
+                  onChange="set_drop_shadow()"
+                  style="margin-left: 1em"
+                  checked
                 />
               </td>
             </tr>

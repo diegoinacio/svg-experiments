@@ -7,6 +7,8 @@ const DEFS = document.createElementNS(_SVG_NS, "defs");
 
 DIV.appendChild(SVG);
 
+const filter_style = document.head.querySelector("style#filter-style");
+
 // ! Global variables
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
@@ -19,14 +21,15 @@ let minimumRadius = Math.min(WIDTH, HEIGHT) / 100;
 const theta_factor = document.querySelector("input#theta_factor");
 let THETA_VAR = parseFloat(theta_factor.value);
 
+const drop_shadow = document.querySelector("input#drop_shadow");
+let SHADOW_VAR = drop_shadow.checked;
+
 // ! Drop Shadow
-if (!window.mobileAndTabletCheck()) {
-  // * Include drop shadow filter if it isn't a mobile device
-  document.head.querySelector("style").innerHTML += `
-    svg polygon {
-      filter: url(#drop-shadow);
-    }
-  `;
+if (window.mobileAndTabletCheck()) {
+  // * If it is mobile device, remove drop shadow toggler
+  SHADOW_VAR = false;
+  drop_shadow.closest("tr").remove();
+  filter_style.innerHTML = "";
 }
 
 // ! Utils
@@ -51,19 +54,13 @@ function getPoints(cx, cy, r, theta) {
 }
 
 function randomColor() {
-  // * Get random channels -> object
-  let r = Math.random();
-  let g = Math.random();
-  let b = Math.random();
-  // * Get norm
-  let n = Math.sqrt(r * r + g * g + b * b);
-  // * Normalize channels
-  r = Math.floor((255 * r) / n);
-  g = Math.floor((255 * g) / n);
-  b = Math.floor((255 * b) / n);
+  // * Get random hsl channels -> object
+  const h = parseInt(Math.random() * 360);
+  const s = parseInt(30 + Math.random() * 40);
+  const l = parseInt(50 + Math.random() * 20);
 
   // * Output
-  return `rgb(${r}, ${g}, ${b})`;
+  return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
 // ! Event functions
@@ -75,6 +72,19 @@ function stop_propagation() {
 // * Theta factor parameter events
 function set_theta_factor() {
   THETA_VAR = parseFloat(theta_factor.value);
+  main();
+}
+
+// * Drop shadow parameter events
+function set_drop_shadow() {
+  SHADOW_VAR = drop_shadow.checked;
+  filter_style.innerHTML = !SHADOW_VAR
+    ? ""
+    : `
+    svg polygon {
+      filter: url(#drop-shadow);
+    }
+  `;
   main();
 }
 
@@ -254,8 +264,7 @@ function main() {
 
   setSVG();
 
-  if (!window.mobileAndTabletCheck()) {
-    // * Do not build drop shadow filter in mobile devices
+  if (!window.mobileAndTabletCheck() && SHADOW_VAR) {
     dropShadow();
   }
 
