@@ -11,9 +11,23 @@ DIV.appendChild(SVG);
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
 
-// ! Parameters
-const MIN_RADIUS = 16; // Minimum radius
-const SPACE_BTW = 4; // Space between lines
+// ! Parameters (from index page)
+const line_slicesMin = document.querySelector("input#line_slicesMin");
+const line_slicesMax = document.querySelector("input#line_slicesMax");
+let SLICES_MIN_VAR = parseInt(
+  Math.min(line_slicesMin.value, line_slicesMax.value)
+);
+let SLICES_MAX_VAR = parseInt(
+  Math.max(line_slicesMin.value, line_slicesMax.value)
+);
+
+const line_width = document.querySelector("input#line_width");
+const line_round = document.querySelector("input#line_round");
+let WIDTH_VAR = parseInt(line_width.value);
+let ROUND_VAR = line_round.checked;
+
+const space_between = document.querySelector("input#space_between");
+let SPACE_VAR = parseInt(space_between.value);
 
 // ! Utils
 function getSlices(N, min, max) {
@@ -31,20 +45,54 @@ function getSlices(N, min, max) {
 }
 
 function randomColor() {
-  // * Get random channels
-  let r = Math.random();
-  let g = Math.random();
-  let b = Math.random();
-  // * Get norm
-  let n = Math.sqrt(r * r + g * g + b * b);
-  // * Normalize channels
-  r = Math.floor((255 * r) / n);
-  g = Math.floor((255 * g) / n);
-  b = Math.floor((255 * b) / n);
+  // * Get random hue channel -> object
+  const h = parseInt(Math.random() * 360);
 
   // * Output
-  return `rgb(${r}, ${g}, ${b})`;
+  return `hsl(${h}, 70%, 50%)`;
 }
+
+// ! Event listeners
+// * Stop propagation when click on input
+function stop_propagation() {
+  event.stopPropagation();
+}
+
+// * Line slices parameter events
+function set_line_slices() {
+  SLICES_MIN_VAR = parseInt(
+    Math.min(line_slicesMin.value, line_slicesMax.value)
+  );
+  SLICES_MAX_VAR = parseInt(
+    Math.max(line_slicesMin.value, line_slicesMax.value)
+  );
+  main();
+}
+
+// * Line width parameter events
+function set_line_width() {
+  WIDTH_VAR = parseInt(line_width.value);
+  main();
+}
+
+// * Line round parameter events
+function set_line_round() {
+  ROUND_VAR = line_round.checked;
+  main();
+}
+
+// * Space between parameter events
+function set_space_between() {
+  SPACE_VAR = parseInt(space_between.value);
+  main();
+}
+
+// * Resize window
+window.addEventListener("resize", (event) => {
+  WIDTH = window.innerWidth;
+  HEIGHT = window.innerHeight;
+  main();
+});
 
 // ! Build functions
 function setSVG() {
@@ -56,23 +104,16 @@ function setSVG() {
 
 function draw() {
   // ! Draw gradient lines
-  // * Define line radius based on number of rows
-  let steps = Math.floor(HEIGHT / MIN_RADIUS); // Number of rows
-
-  // * Define actual radius
-  let radius = (HEIGHT - (steps + 1) * SPACE_BTW) / steps / 2;
-
-  let x_min = SPACE_BTW + radius; // Define x minimum
-  let x_max = WIDTH - radius - SPACE_BTW; // Define x maximum
-
-  let y1 = SPACE_BTW + radius; // Init y position
+  let y1 = 0; // Init y position
   let id_index = 0; // Global index counter
 
-  while (y1 < HEIGHT) {
+  while (y1 < HEIGHT + WIDTH_VAR) {
     // * Get number of slices for current row
-    let N = Math.floor(4 + Math.random() * 4);
+    let N = parseInt(
+      SLICES_MIN_VAR + 1 + Math.random() * (SLICES_MAX_VAR - SLICES_MIN_VAR + 1)
+    );
     // * Get slices
-    let slices = getSlices(N, x_min, x_max);
+    let slices = getSlices(N, 0, WIDTH);
 
     // ! Loop over slices of current row
     for (let i = 0; i < N - 1; i++) {
@@ -107,16 +148,16 @@ function draw() {
       let x2 = slices[i + 1];
 
       // * Compensate position by radius and space between
-      x1 += i ? 2 * radius + SPACE_BTW / 2 : 0;
-      x2 -= i == N - 1 ? 2 * radius + SPACE_BTW / 2 : 0;
+      x1 += i ? WIDTH_VAR + SPACE_VAR : 0;
+      x2 -= i == N - 1 ? WIDTH_VAR + SPACE_VAR : 0;
 
       // * Set line/slice attributes
       line.setAttribute("x1", x1);
-      line.setAttribute("y1", y1 + 0.0001); // ? Perfectly horizontal/vertical line does not render
+      line.setAttribute("y1", y1 + 0.0001); // ? Perfectly aligned (horizontal/vertical) lines do not render
       line.setAttribute("x2", x2);
       line.setAttribute("y2", y1);
-      line.setAttribute("stroke-width", 2 * radius);
-      line.setAttribute("stroke-linecap", "round");
+      line.setAttribute("stroke-width", WIDTH_VAR);
+      line.setAttribute("stroke-linecap", ROUND_VAR ? "round" : "square");
       line.setAttribute("stroke", id_url);
 
       // * Include slice to SVG
@@ -126,7 +167,7 @@ function draw() {
     }
 
     // * Skip to the next row
-    y1 += 2 * radius + SPACE_BTW;
+    y1 += WIDTH_VAR + SPACE_VAR;
   }
 }
 
@@ -142,14 +183,3 @@ function main() {
 }
 
 main();
-
-// ! Event listeners
-window.addEventListener("click", (event) => {
-  main();
-});
-
-window.addEventListener("resize", (event) => {
-  WIDTH = window.innerWidth;
-  HEIGHT = window.innerHeight;
-  main();
-});

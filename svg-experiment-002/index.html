@@ -53,9 +53,79 @@
         <table>
           <tbody>
             <tr>
-              <td>👇🏾</td>
+              <td>🍉</td>
               <td>
-                <em class="command">Click</em> anywhere to get new results.
+                Define <em class="command">lines slices</em> variation <br />
+                <input
+                  type="number"
+                  id="line_slicesMin"
+                  name="line_slicesMin"
+                  value="4"
+                  step="1"
+                  min="1"
+                  max="12"
+                  onClick="stop_propagation()"
+                  onChange="set_line_slices()"
+                  title="Minimum variational number of slices."
+                />
+                <input
+                  type="number"
+                  id="line_slicesMax"
+                  name="line_slicesMax"
+                  value="8"
+                  step="1"
+                  min="1"
+                  max="12"
+                  onClick="stop_propagation()"
+                  onChange="set_line_slices()"
+                  title="Maximum variational number of slices."
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>⭕</td>
+              <td>
+                Define <em class="command">line width</em> <br />
+                <input
+                  type="number"
+                  id="line_width"
+                  name="line_width"
+                  value="16"
+                  step="1"
+                  min="1"
+                  max="48"
+                  onClick="stop_propagation()"
+                  onChange="set_line_width()"
+                />
+                <label>
+                  <input
+                    type="checkbox"
+                    name="line_round"
+                    id="line_round"
+                    onClick="stop_propagation()"
+                    onChange="set_line_round()"
+                    style="margin-left: 1em"
+                    checked
+                  />
+                  round?
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>🤏</td>
+              <td>
+                Define <em class="command">space between</em> lines <br />
+                <input
+                  type="number"
+                  id="space_between"
+                  name="space_between"
+                  value="4"
+                  step="1"
+                  min="0"
+                  max="16"
+                  onClick="stop_propagation()"
+                  onChange="set_space_between()"
+                />
               </td>
             </tr>
           </tbody>
