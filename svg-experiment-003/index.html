@@ -53,6 +53,72 @@
         <table>
           <tbody>
             <tr>
+              <td>🔘</td>
+              <td>
+                Define <em class="command">bokeh radius</em> variation <br />
+                <input
+                  type="number"
+                  id="bokeh_radiusMin"
+                  name="bokeh_radiusMin"
+                  value="1"
+                  step="0.1"
+                  min="0.1"
+                  max="10"
+                  onClick="stop_propagation()"
+                  onChange="set_bokeh_radius()"
+                  title="Minimum variational radius."
+                />
+                <input
+                  type="number"
+                  id="bokeh_radiusMax"
+                  name="bokeh_radiusMax"
+                  value="5"
+                  step="0.1"
+                  min="0.1"
+                  max="10"
+                  onClick="stop_propagation()"
+                  onChange="set_bokeh_radius()"
+                  title="Maximum variational radius."
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>👓</td>
+              <td>
+                Define <em class="command">bokeh depth</em> <br />
+                <input
+                  type="number"
+                  id="bokeh_depth"
+                  name="bokeh_depth"
+                  value="2"
+                  step="0.5"
+                  min="1"
+                  max="10"
+                  onClick="stop_propagation()"
+                  onChange="set_bokeh_depth()"
+                  title="Emulate defocus effect by increasing the size of farthest bokeh."
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>✨</td>
+              <td>
+                Define <em class="command">bokeh density</em> <br />
+                <input
+                  type="number"
+                  id="bokeh_density"
+                  name="bokeh_density"
+                  value="0.5"
+                  step="0.1"
+                  min="0.1"
+                  max="2"
+                  onClick="stop_propagation()"
+                  onChange="set_bokeh_density()"
+                  title="Change bokeh distribution."
+                />
+              </td>
+            </tr>
+            <tr>
               <td>💫</td>
               <td><em class="command">Move</em> to see the parallax effect.</td>
             </tr>
