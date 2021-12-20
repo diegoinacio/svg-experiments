@@ -56,6 +56,72 @@
       <div class="description light">
         <table>
           <tr>
+            <td>🔘</td>
+            <td>
+              Define <em class="command">circle radius</em> variation <br />
+              <input
+                type="number"
+                id="circle_radiusMin"
+                name="circle_radiusMin"
+                value="1"
+                step="0.1"
+                min="0.1"
+                max="8"
+                onClick="stop_propagation()"
+                onChange="set_circle_radius()"
+                title="Minimum variational radius."
+              />
+              <input
+                type="number"
+                id="circle_radiusMax"
+                name="circle_radiusMax"
+                value="3"
+                step="0.1"
+                min="0.1"
+                max="8"
+                onClick="stop_propagation()"
+                onChange="set_circle_radius()"
+                title="Maximum variational radius."
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>👓</td>
+            <td>
+              Define <em class="command">depth levels</em> <br />
+              <input
+                type="number"
+                id="depth_levels"
+                name="depth_levels"
+                value="8"
+                step="1"
+                min="2"
+                max="16"
+                onClick="stop_propagation()"
+                onChange="set_depth_levels()"
+                title="Define number of depth levels."
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>✨</td>
+            <td>
+              Define <em class="command">circle density</em> <br />
+              <input
+                type="number"
+                id="circle_density"
+                name="circle_density"
+                value="0.5"
+                step="0.1"
+                min="0.1"
+                max="2"
+                onClick="stop_propagation()"
+                onChange="set_circle_density()"
+                title="Change circle distribution."
+              />
+            </td>
+          </tr>
+          <tr>
             <td>👇🏾</td>
             <td>
               <em class="command">Click</em> on the bubbles to change the focus.
