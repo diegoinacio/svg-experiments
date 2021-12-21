@@ -19,34 +19,46 @@ FG.id = "foreground-group";
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
 
-// ! Parameters
-const GRID_SPACE = 32;
+// ! Parameters (from index page)
+const grid_horizontal = document.querySelector("input#grid_horizontal");
+const grid_vertical = document.querySelector("input#grid_vertical");
+let GRID_HOR_VAR = parseInt(grid_horizontal.value);
+let GRID_VER_VAR = parseInt(grid_vertical.value);
+
+const pattern_polka = document.querySelector("input#pattern_polka");
+const pattern_sprinkles = document.querySelector("input#pattern_sprinkles");
+const pattern_zebra = document.querySelector("input#pattern_zebra");
+let POLKA_VAR = pattern_polka.checked;
+let SPRINKLES_VAR = pattern_sprinkles.checked;
+let ZEBRA_VAR = pattern_zebra.checked;
+
 const PATTERN_SPACE = 16;
-const SCATTER_SHAPES_SPACE = 200;
-const SCATTER_PATHS_SPACE = 185;
+
+const shape_horizontal = document.querySelector("input#shape_horizontal");
+const shape_vertical = document.querySelector("input#shape_vertical");
+let SHAPE_HOR_VAR = parseInt(shape_horizontal.value);
+let SHAPE_VER_VAR = parseInt(shape_vertical.value);
+
+const shape_circle = document.querySelector("input#shape_circle");
+const shape_square = document.querySelector("input#shape_square");
+const shape_triangle = document.querySelector("input#shape_triangle");
+let CIRCLE_VAR = shape_circle.checked;
+let SQUARE_VAR = shape_square.checked;
+let TRIANGLE_VAR = shape_triangle.checked;
+
+const zigzag_horizontal = document.querySelector("input#zigzag_horizontal");
+const zigzag_vertical = document.querySelector("input#zigzag_vertical");
+let ZIGZAG_HOR_VAR = parseInt(zigzag_horizontal.value);
+let ZIGZAG_VER_VAR = parseInt(zigzag_vertical.value);
+
+const show_zigzag = document.querySelector("input#show_zigzag");
+let ZIGZAG_VAR = show_zigzag.checked;
 
 let PATTERNS = [];
 let SHAPES = [];
 let POINTS = [];
 
 // ! Utils
-function randomColor() {
-  // ! Return random normalized colors
-  // * Get random channels
-  let r = Math.random();
-  let g = Math.random();
-  let b = Math.random();
-  // * Get norm
-  let n = Math.sqrt(r * r + g * g + b * b);
-  // * Normalize channels
-  r = Math.floor((255 * r) / n);
-  g = Math.floor((255 * g) / n);
-  b = Math.floor((255 * b) / n);
-
-  // * Output
-  return `rgb(${r}, ${g}, ${b})`;
-}
-
 function distance(pa, pb) {
   // ! Calculate euclidean distance between pa and pb
   return Math.sqrt(Math.pow(pa.x - pb.x, 2) + Math.pow(pa.y - pb.y, 2));
@@ -105,6 +117,83 @@ function drawZigZag() {
   return group;
 }
 
+// ! Event listeners
+// * Grid parameter events
+function set_grid_horizontal() {
+  GRID_HOR_VAR = parseInt(grid_horizontal.value);
+  main();
+}
+
+function set_grid_vertical() {
+  GRID_VER_VAR = parseInt(grid_vertical.value);
+  main();
+}
+
+// * Patterns parameter events
+function set_pattern_polka() {
+  POLKA_VAR = pattern_polka.checked;
+  main();
+}
+
+function set_pattern_sprinkles() {
+  SPRINKLES_VAR = pattern_sprinkles.checked;
+  main();
+}
+
+function set_pattern_zebra() {
+  ZEBRA_VAR = pattern_zebra.checked;
+  main();
+}
+
+// * Shape parameter events
+function set_shape_horizontal() {
+  SHAPE_HOR_VAR = parseInt(shape_horizontal.value);
+  main();
+}
+
+function set_shape_vertical() {
+  SHAPE_VER_VAR = parseInt(shape_vertical.value);
+  main();
+}
+
+function set_shape_circle() {
+  CIRCLE_VAR = shape_circle.checked;
+  main();
+}
+
+function set_shape_square() {
+  SQUARE_VAR = shape_square.checked;
+  main();
+}
+
+function set_shape_triangle() {
+  TRIANGLE_VAR = shape_triangle.checked;
+  main();
+}
+
+// * Zigzag parameter events
+function set_zigzag_horizontal() {
+  ZIGZAG_HOR_VAR = parseInt(zigzag_horizontal.value);
+  main();
+}
+
+function set_zigzag_vertical() {
+  ZIGZAG_VER_VAR = parseInt(zigzag_vertical.value);
+  main();
+}
+
+function set_show_zigzag() {
+  ZIGZAG_VAR = show_zigzag.checked;
+  main();
+}
+
+// * Resize window
+window.addEventListener("resize", () => {
+  WIDTH = window.innerWidth;
+  HEIGHT = window.innerHeight;
+  main();
+});
+
 // ! Build functions
 function setSVG() {
   SVG.setAttribute("version", "1.1");
@@ -116,7 +205,7 @@ function setSVG() {
 function drawGrid() {
   // ! Draw background grid
   // ? Vertical lines
-  for (let i = 0; i < WIDTH; i += GRID_SPACE) {
+  for (let i = 0; i < WIDTH; i += GRID_HOR_VAR) {
     let line = document.createElementNS(_SVG_NS, "line");
     // * Set attributes
     line.setAttribute("x1", i);
@@ -128,7 +217,7 @@ function drawGrid() {
   }
 
   // ? Horizontal lines
-  for (let j = 0; j < HEIGHT; j += GRID_SPACE) {
+  for (let j = 0; j < HEIGHT; j += GRID_VER_VAR) {
     let line = document.createElementNS(_SVG_NS, "line");
     // * Set attributes
     line.setAttribute("x1", 0);
@@ -145,88 +234,94 @@ function drawPatterns() {
   let PATTERN;
   PATTERNS = [];
 
-  // ? Pattern 1 - Circles
-  PATTERN = document.createElementNS(_SVG_NS, "g");
-  PATTERN.id = "pattern-circles";
-  PATTERN.setAttribute("width", 1);
-  PATTERN.setAttribute("height", 1);
+  // ? Pattern 1 - Polka Dot
+  if (POLKA_VAR) {
+    PATTERN = document.createElementNS(_SVG_NS, "g");
+    PATTERN.id = "pattern-circles";
+    PATTERN.setAttribute("width", 1);
+    PATTERN.setAttribute("height", 1);
 
-  DEFS.appendChild(PATTERN);
-  PATTERNS.push(PATTERN.id);
+    DEFS.appendChild(PATTERN);
+    PATTERNS.push(PATTERN.id);
 
-  for (let i = 0; i < WIDTH + 1; i += PATTERN_SPACE) {
-    for (let j = 0; j < HEIGHT + 1; j += PATTERN_SPACE) {
-      let circle = document.createElementNS(_SVG_NS, "circle");
-      // * Set attributes
-      circle.setAttribute("r", Math.random() * 3 + 1);
-      circle.setAttribute("cx", i);
-      circle.setAttribute("cy", j);
-      // * Append
-      PATTERN.appendChild(circle);
-    }
-  }
-
-  // ? Pattern 2 - Paths
-  PATTERN = document.createElementNS(_SVG_NS, "g");
-  PATTERN.id = "pattern-paths";
-  PATTERN.setAttribute("width", 1);
-  PATTERN.setAttribute("height", 1);
-
-  DEFS.appendChild(PATTERN);
-  PATTERNS.push(PATTERN.id);
-
-  for (let i = 0; i < WIDTH + 1; i += PATTERN_SPACE) {
-    for (let j = 0; j < HEIGHT + 1; j += PATTERN_SPACE) {
-      let path = document.createElementNS(_SVG_NS, "path");
-      // * Random Xs
-      let x1 = Math.random();
-      let x2 = Math.random();
-      let x1x2 = x1 + x2;
-      x1 = (PATTERN_SPACE * x1) / x1x2 + i;
-      x2 = (PATTERN_SPACE * x2) / x1x2 + i;
-      // * Random Ys
-      let y1 = Math.random();
-      let y2 = Math.random();
-      let y1y2 = y1 + y2;
-      y1 = (PATTERN_SPACE * y1) / y1y2 + j;
-      y2 = (PATTERN_SPACE * y2) / y1y2 + j;
-      // * Random middle
-      let t, mx, my;
-      if (Math.abs(x1 - x2) > Math.abs(y1 - y2)) {
-        t = Math.random();
-        mx = t * x1 + (1 - t) * x2;
-        my = Math.random() * PATTERN_SPACE + j;
-      } else {
-        t = Math.random();
-        my = t * y1 + (1 - t) * y2;
-        mx = Math.random() * PATTERN_SPACE + i;
+    for (let i = 0; i < WIDTH + 1; i += PATTERN_SPACE) {
+      for (let j = 0; j < HEIGHT + 1; j += PATTERN_SPACE) {
+        let circle = document.createElementNS(_SVG_NS, "circle");
+        // * Set attributes
+        circle.setAttribute("r", Math.random() * 3 + 1);
+        circle.setAttribute("cx", i);
+        circle.setAttribute("cy", j);
+        // * Append
+        PATTERN.appendChild(circle);
       }
-      // * Set attributes
-      path.setAttribute("d", `M ${x1} ${y1} Q ${mx} ${my}, ${x2} ${y2}`);
-      // * Append
-      PATTERN.appendChild(path);
     }
   }
 
-  // ? Pattern 3 - Lines
-  PATTERN = document.createElementNS(_SVG_NS, "g");
-  PATTERN.id = "pattern-lines";
-  PATTERN.setAttribute("width", 1);
-  PATTERN.setAttribute("height", 1);
+  // ? Pattern 2 - Sprinkles
+  if (SPRINKLES_VAR) {
+    PATTERN = document.createElementNS(_SVG_NS, "g");
+    PATTERN.id = "pattern-paths";
+    PATTERN.setAttribute("width", 1);
+    PATTERN.setAttribute("height", 1);
 
-  DEFS.appendChild(PATTERN);
-  PATTERNS.push(PATTERN.id);
+    DEFS.appendChild(PATTERN);
+    PATTERNS.push(PATTERN.id);
 
-  for (let i = 0; i < HEIGHT + 1; i += PATTERN_SPACE) {
-    let line = document.createElementNS(_SVG_NS, "line");
-    // * Set attributes
-    line.setAttribute("x1", 0);
-    line.setAttribute("x2", WIDTH);
-    line.setAttribute("y1", i);
-    line.setAttribute("y2", i + 0.0001);
-    line.setAttribute("stroke-width", 7 * Math.random() + 1);
-    // * Append
-    PATTERN.appendChild(line);
+    for (let i = 0; i < WIDTH + 1; i += PATTERN_SPACE) {
+      for (let j = 0; j < HEIGHT + 1; j += PATTERN_SPACE) {
+        let path = document.createElementNS(_SVG_NS, "path");
+        // * Random Xs
+        let x1 = Math.random();
+        let x2 = Math.random();
+        let x1x2 = x1 + x2;
+        x1 = (PATTERN_SPACE * x1) / x1x2 + i;
+        x2 = (PATTERN_SPACE * x2) / x1x2 + i;
+        // * Random Ys
+        let y1 = Math.random();
+        let y2 = Math.random();
+        let y1y2 = y1 + y2;
+        y1 = (PATTERN_SPACE * y1) / y1y2 + j;
+        y2 = (PATTERN_SPACE * y2) / y1y2 + j;
+        // * Random middle
+        let t, mx, my;
+        if (Math.abs(x1 - x2) > Math.abs(y1 - y2)) {
+          t = Math.random();
+          mx = t * x1 + (1 - t) * x2;
+          my = Math.random() * PATTERN_SPACE + j;
+        } else {
+          t = Math.random();
+          my = t * y1 + (1 - t) * y2;
+          mx = Math.random() * PATTERN_SPACE + i;
+        }
+        // * Set attributes
+        path.setAttribute("d", `M ${x1} ${y1} Q ${mx} ${my}, ${x2} ${y2}`);
+        // * Append
+        PATTERN.appendChild(path);
+      }
+    }
+  }
+
+  // ? Pattern 3 - Zebra
+  if (ZEBRA_VAR) {
+    PATTERN = document.createElementNS(_SVG_NS, "g");
+    PATTERN.id = "pattern-lines";
+    PATTERN.setAttribute("width", 1);
+    PATTERN.setAttribute("height", 1);
+
+    DEFS.appendChild(PATTERN);
+    PATTERNS.push(PATTERN.id);
+
+    for (let i = 0; i < HEIGHT + 1; i += PATTERN_SPACE) {
+      let line = document.createElementNS(_SVG_NS, "line");
+      // * Set attributes
+      line.setAttribute("x1", 0);
+      line.setAttribute("x2", WIDTH);
+      line.setAttribute("y1", i);
+      line.setAttribute("y2", i + 0.0001);
+      line.setAttribute("stroke-width", 7 * Math.random() + 1);
+      // * Append
+      PATTERN.appendChild(line);
+    }
   }
 }
 
@@ -236,32 +331,38 @@ function drawShapes() {
   SHAPES = [];
 
   // ? Shape 1 - Circle
-  SHAPE = document.createElementNS(_SVG_NS, "circle");
-  SHAPE.id = "shape-circle";
-  SHAPE.setAttribute("r", 50);
-  SHAPE.setAttribute("cx", 50);
-  SHAPE.setAttribute("cy", 50);
+  if (CIRCLE_VAR) {
+    SHAPE = document.createElementNS(_SVG_NS, "circle");
+    SHAPE.id = "shape-circle";
+    SHAPE.setAttribute("r", 50);
+    SHAPE.setAttribute("cx", 50);
+    SHAPE.setAttribute("cy", 50);
 
-  DEFS.appendChild(SHAPE);
-  SHAPES.push(SHAPE.id);
+    DEFS.appendChild(SHAPE);
+    SHAPES.push(SHAPE.id);
+  }
 
   // ? Shape 2 - Square
-  SHAPE = document.createElementNS(_SVG_NS, "rect");
-  SHAPE.id = "shape-square";
-  SHAPE.setAttribute("x", 15);
-  SHAPE.setAttribute("y", 15);
-  SHAPE.setAttribute("width", 70);
-  SHAPE.setAttribute("height", 70);
+  if (SQUARE_VAR) {
+    SHAPE = document.createElementNS(_SVG_NS, "rect");
+    SHAPE.id = "shape-square";
+    SHAPE.setAttribute("x", 15);
+    SHAPE.setAttribute("y", 15);
+    SHAPE.setAttribute("width", 70);
+    SHAPE.setAttribute("height", 70);
 
-  DEFS.appendChild(SHAPE);
-  SHAPES.push(SHAPE.id);
+    DEFS.appendChild(SHAPE);
+    SHAPES.push(SHAPE.id);
+  }
 
   // ? Shape 3 - Triangle
-  SHAPE = drawTriangle(50);
-  SHAPE.id = "shape-triangle";
+  if (TRIANGLE_VAR) {
+    SHAPE = drawTriangle(50);
+    SHAPE.id = "shape-triangle";
 
-  DEFS.appendChild(SHAPE);
-  SHAPES.push(SHAPE.id);
+    DEFS.appendChild(SHAPE);
+    SHAPES.push(SHAPE.id);
+  }
 }
 
 function scatterShapes() {
@@ -270,8 +371,8 @@ function scatterShapes() {
   POINTS = [];
 
   // * Finding points
-  for (let i = 1; i < WIDTH + 1; i += SCATTER_SHAPES_SPACE) {
-    for (let j = 1; j < HEIGHT + 1; j += SCATTER_SHAPES_SPACE) {
+  for (let i = 1; i < WIDTH + 1; i += SHAPE_HOR_VAR) {
+    for (let j = 1; j < HEIGHT + 1; j += SHAPE_VER_VAR) {
       POINT = {};
       POINT.x = i + (Math.random() * 2 - 1) * 20;
       POINT.y = j + (Math.random() * 2 - 1) * 20;
@@ -332,23 +433,25 @@ function scatterShapes() {
     }
   });
 
-  // ! Scatter paths
-  for (let i = 1; i < WIDTH + 1; i += SCATTER_PATHS_SPACE) {
-    for (let j = 1; j < HEIGHT + 1; j += SCATTER_PATHS_SPACE) {
-      SHAPE = drawZigZag();
-      let x = i + (Math.random() * 2 - 1) * 20 + 50;
-      let y = j + (Math.random() * 2 - 1) * 20 + 50;
-      let r = Math.random() * 0.5 + 0.75;
-      let theta = Math.random() * 360;
-      SHAPE.setAttribute(
-        "transform",
-        `
-        translate(${x} ${y})
-        scale(${r})
-        rotate(${theta} 50 50)
-        `
-      );
-      SVG.appendChild(SHAPE);
+  // ! Scatter zigzags
+  if (ZIGZAG_VAR) {
+    for (let i = 1; i < WIDTH + 1; i += ZIGZAG_HOR_VAR) {
+      for (let j = 1; j < HEIGHT + 1; j += ZIGZAG_VER_VAR) {
+        SHAPE = drawZigZag();
+        let x = i + (Math.random() * 2 - 1) * 20 + 50;
+        let y = j + (Math.random() * 2 - 1) * 20 + 50;
+        let r = Math.random() * 0.5 + 0.75;
+        let theta = Math.random() * 360;
+        SHAPE.setAttribute(
+          "transform",
+          `
+          translate(${x} ${y})
+          scale(${r})
+          rotate(${theta} 50 50)
+          `
+        );
+        SVG.appendChild(SHAPE);
+      }
     }
   }
 }
@@ -375,14 +478,3 @@ function main() {
 }
 
 main();
-
-// ! Event listeners
-window.addEventListener("click", (event) => {
-  main();
-});
-
-window.addEventListener("resize", () => {
-  WIDTH = window.innerWidth;
-  HEIGHT = window.innerHeight;
-  main();
-});

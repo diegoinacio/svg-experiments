@@ -51,9 +51,186 @@
         <table>
           <tbody>
             <tr>
-              <td>👇🏾</td>
+              <td>🌐</td>
               <td>
-                <em class="command">Click</em> anywhere to get new results.
+                Define <em class="command">space between</em> grid <br />
+                <input
+                  type="number"
+                  id="grid_horizontal"
+                  name="grid_horizontal"
+                  value="64"
+                  step="1"
+                  min="8"
+                  max="128"
+                  onClick="stop_propagation()"
+                  onChange="set_grid_horizontal()"
+                  title="Horizontal space between grid lines."
+                />
+                <input
+                  type="number"
+                  id="grid_vertical"
+                  name="grid_vertical"
+                  value="64"
+                  step="1"
+                  min="8"
+                  max="128"
+                  onClick="stop_propagation()"
+                  onChange="set_grid_vertical()"
+                  title="Vertical space between grid lines."
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>🏁</td>
+              <td>
+                Select <em class="command">patterns</em> <br />
+                <label>
+                  <input
+                    type="checkbox"
+                    name="pattern_polka"
+                    id="pattern_polka"
+                    onClick="stop_propagation()"
+                    onChange="set_pattern_polka()"
+                    checked
+                  />
+                  Polka Dot
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="pattern_sprinkles"
+                    id="pattern_sprinkles"
+                    onClick="stop_propagation()"
+                    onChange="set_pattern_sprinkles()"
+                    style="margin-left: 1em"
+                  />
+                  Sprinkles
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="pattern_zebra"
+                    id="pattern_zebra"
+                    onClick="stop_propagation()"
+                    onChange="set_pattern_zebra()"
+                    style="margin-left: 1em"
+                    checked
+                  />
+                  Zebra
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>🏛️</td>
+              <td>
+                Define <em class="command">space between</em> shapes <br />
+                <input
+                  type="number"
+                  id="shape_horizontal"
+                  name="shape_horizontal"
+                  value="250"
+                  step="10"
+                  min="100"
+                  max="400"
+                  onClick="stop_propagation()"
+                  onChange="set_shape_horizontal()"
+                  title="Horizontal space between shapes."
+                />
+                <input
+                  type="number"
+                  id="shape_vertical"
+                  name="shape_vertical"
+                  value="250"
+                  step="10"
+                  min="100"
+                  max="400"
+                  onClick="stop_propagation()"
+                  onChange="set_shape_vertical()"
+                  title="Vertical space between shapes."
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>💠</td>
+              <td>
+                Select <em class="command">shapes</em> <br />
+                <label>
+                  <input
+                    type="checkbox"
+                    name="shape_circle"
+                    id="shape_circle"
+                    onClick="stop_propagation()"
+                    onChange="set_shape_circle()"
+                    checked
+                  />
+                  Circle
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="shape_square"
+                    id="shape_square"
+                    onClick="stop_propagation()"
+                    onChange="set_shape_square()"
+                    style="margin-left: 1em"
+                    checked
+                  />
+                  Square
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="shape_triangle"
+                    id="shape_triangle"
+                    onClick="stop_propagation()"
+                    onChange="set_shape_triangle()"
+                    style="margin-left: 1em"
+                    checked
+                  />
+                  Triangle
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>⚡</td>
+              <td>
+                Define <em class="command">space between</em> zigzags <br />
+                <input
+                  type="number"
+                  id="zigzag_horizontal"
+                  name="zigzag_horizontal"
+                  value="230"
+                  step="10"
+                  min="100"
+                  max="400"
+                  onClick="stop_propagation()"
+                  onChange="set_zigzag_horizontal()"
+                  title="Horizontal space between zigzags."
+                />
+                <input
+                  type="number"
+                  id="zigzag_vertical"
+                  name="zigzag_vertical"
+                  value="230"
+                  step="10"
+                  min="100"
+                  max="400"
+                  onClick="stop_propagation()"
+                  onChange="set_zigzag_vertical()"
+                  title="Vertical space between zigzags."
+                />
+                <label>
+                  <input
+                    type="checkbox"
+                    name="show_zigzag"
+                    id="show_zigzag"
+                    onClick="stop_propagation()"
+                    onChange="set_show_zigzag()"
+                    style="margin-left: 1em"
+                    checked
+                  />
+                  include?
+                </label>
               </td>
             </tr>
           </tbody>
