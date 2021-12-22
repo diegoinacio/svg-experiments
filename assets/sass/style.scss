@@ -324,6 +324,11 @@ body.experiment {
     svg {
       a {
         stroke: white;
+
+        circle {
+          fill: gray;
+          fill-opacity: 0.5;
+        }
       }
     }
   }
@@ -332,6 +337,11 @@ body.experiment {
     svg {
       a {
         stroke: black;
+
+        circle {
+          fill: gray;
+          fill-opacity: 0.5;
+        }
       }
     }
   }
@@ -396,6 +406,8 @@ body.experiment {
       a {
         circle {
           stroke: white;
+          fill: gray;
+          fill-opacity: 0.5;
         }
 
         path {
@@ -410,6 +422,8 @@ body.experiment {
       a {
         circle {
           stroke: black;
+          fill: gray;
+          fill-opacity: 0.5;
         }
 
         path {

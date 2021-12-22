@@ -326,8 +326,18 @@ body.experiment .wrapper .description.dark .close:hover {
   stroke: white;
 }
 
+.return-corner.light svg a circle {
+  fill: gray;
+  fill-opacity: 0.5;
+}
+
 .return-corner.dark svg a {
   stroke: black;
+}
+
+.return-corner.dark svg a circle {
+  fill: gray;
+  fill-opacity: 0.5;
 }
 
 /* ! GitHub Corner */
@@ -398,6 +408,8 @@ body.experiment .wrapper .description.dark .close:hover {
 
 .github-corner.light svg a circle {
   stroke: white;
+  fill: gray;
+  fill-opacity: 0.5;
 }
 
 .github-corner.light svg a path {
@@ -406,6 +418,8 @@ body.experiment .wrapper .description.dark .close:hover {
 
 .github-corner.dark svg a circle {
   stroke: black;
+  fill: gray;
+  fill-opacity: 0.5;
 }
 
 .github-corner.dark svg a path {
