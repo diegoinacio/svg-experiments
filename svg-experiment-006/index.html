@@ -92,10 +92,21 @@
                 id="radius"
                 onClick="stop_propagation()"
                 onChange="select_radius()"
+                title="size 2r+1 | rules 2^2^s possibilities"
               >
-                <option value="1" selected="selected">radius 1</option>
-                <option value="2">radius 2</option>
-                <option value="3">radius 3</option>
+                <option
+                  value="1"
+                  selected="selected"
+                  title="size 3 | rules 2^8 possibilities"
+                >
+                  radius 1
+                </option>
+                <option value="2" title="size 5 | 2^32 possibilities">
+                  radius 2
+                </option>
+                <option value="3" title="size 7 | 2^128 possibilities">
+                  radius 3
+                </option>
                 <option value="0">custom radius</option>
               </select>
               <input
