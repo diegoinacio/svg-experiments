@@ -278,18 +278,18 @@ body.experiment {
 }
 
 /* ! Return Corner */
-@keyframes arrow-shake {
+@keyframes arrow-shake-horizontal {
   0%,
   100% {
-    transform: translate(0 0);
+    transform: translateX(0);
   }
   20%,
   60% {
-    transform: translate(10px);
+    transform: translateX(10px);
   }
   40%,
   80% {
-    transform: translate(-10px);
+    transform: translateX(-10px);
   }
 }
 
@@ -314,7 +314,77 @@ body.experiment {
 
       &:hover {
         .arrow {
-          animation: arrow-shake 0.5s;
+          animation: arrow-shake-horizontal 0.5s;
+        }
+      }
+    }
+  }
+
+  &.light {
+    svg {
+      a {
+        stroke: white;
+
+        circle {
+          fill: gray;
+          fill-opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  &.dark {
+    svg {
+      a {
+        stroke: black;
+
+        circle {
+          fill: gray;
+          fill-opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+/* ! Render Corner */
+@keyframes arrow-shake-vertical {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  20%,
+  60% {
+    transform: translateY(10px);
+  }
+  40%,
+  80% {
+    transform: translateY(-10px);
+  }
+}
+
+.render-corner {
+  position: fixed;
+  left: 0.5em;
+  bottom: 0.5em;
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+
+    a {
+      circle,
+      polyline {
+        fill: black;
+        fill-opacity: 0;
+        stroke-width: 15px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      &:hover {
+        .arrow {
+          animation: arrow-shake-vertical 0.5s;
         }
       }
     }
