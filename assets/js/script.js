@@ -55,6 +55,20 @@ window.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
+  // * Include Return Corner
+  const RENDER_CORNER = document.querySelector(".render-corner");
+  if (RENDER_CORNER) {
+    RENDER_CORNER.innerHTML = `
+      <svg viewbox="0 0 250 250">
+        <a href="javascript: renderSVG()" onClick="stop_propagation()">
+          <title>Render this experiment</title>
+          <circle class="bg" cx="125" cy="125" r="115" />
+          <polyline class="arrow" points="62.5 104 125 167 187.5 104.5" />
+        </a>
+      </svg>
+    `;
+  }
+
   // * Include GitHub Corner
   const GITHUB_CORNER = document.querySelector(".github-corner");
   if (GITHUB_CORNER) {
