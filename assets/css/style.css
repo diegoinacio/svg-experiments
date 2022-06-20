@@ -56,7 +56,7 @@ body.index .wrapper .signature a:hover {
   color: red;
 }
 
-body.index .wrapper .section .item {
+body.index .wrapper .items .item {
   /* * background image */
   background-image: var(--bgi);
   background-size: 800px auto;
@@ -64,7 +64,7 @@ body.index .wrapper .section .item {
   background-position: center;
 }
 
-body.index .wrapper .section .item a {
+body.index .wrapper .items .item a {
   transition: color 1s, -webkit-text-stroke 0.75s, backdrop-filter 0.5s;
   /* * formatting */
   padding: 10% 0 10% 0;
@@ -93,7 +93,7 @@ body.index .wrapper .section .item a {
   background-position: center;
 }
 
-body.index .wrapper .section .item a:hover {
+body.index .wrapper .items .item a:hover {
   /* * colors and text styling */
   color: var(--color);
   -webkit-text-stroke: 1px var(--stroke);
@@ -143,7 +143,7 @@ body.index .wrapper #footer .copyright a:hover {
 
 @media (hover: none) and (pointer: coarse) {
   /* ! Detect touch screen devices */
-  body.index .wrapper .section .item a {
+  body.index .wrapper .items .item a {
     -webkit-transition: none;
     transition: none;
     /* * colors and text styling */

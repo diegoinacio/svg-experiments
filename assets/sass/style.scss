@@ -61,7 +61,7 @@ body.index {
       }
     }
 
-    .section {
+    .items {
       .item {
         /* * background image */
         background-image: var(--bgi);
@@ -155,7 +155,7 @@ body.index {
   /* ! Detect touch screen devices */
   body.index {
     .wrapper {
-      .section {
+      .items {
         .item {
           a {
             transition: none;
