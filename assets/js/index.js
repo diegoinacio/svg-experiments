@@ -2,10 +2,15 @@ const DOMAIN = "diegoinacio.github.io";
 const PROJECT = "svg-experiments";
 
 // ! Build items
-const section = document.querySelector(".section");
-const ITEM = section.querySelectorAll(".item");
+const items = document.querySelector(".items");
 
-ITEM.forEach((item) => {
+import { INDEX } from "../../metadata.mjs";
+
+INDEX.forEach((item) => {
+  const div = document.createElement("div");
+  div.id = item.id;
+  div.className = "item";
+
   // * Check if host is local or not to build image path
   // * If it is local, include relative path
   // * If it is not local, include absolute path
@@ -14,20 +19,23 @@ ITEM.forEach((item) => {
   const url_path = isLocal
     ? `../../${item.id}`
     : `https://${DOMAIN}/${PROJECT}/${item.id}`;
+
   // * Create style variables
-  item.style = `
+  div.style = `
     --bgi: url(${url_path}/thumb.jpg);
-    --color: ${item.getAttribute("color")};
-    --stroke: ${item.getAttribute("stroke")};
+    --color: ${item.color};
+    --stroke: ${item.stroke};
   `;
+
   // * Include item link
-  item.innerHTML = `
-    <a 
+  div.innerHTML = `
+    <a
       href="${item.id}/"
-      title="${item.getAttribute("title")}"
+      title="${item.title}"
       target="_blank"
-    ><h2>${item.getAttribute("name")}</h2></a>
+    ><h2>${item.name}</h2></a>
   `;
+  items.appendChild(div);
 });
 
 // ! Build footer
