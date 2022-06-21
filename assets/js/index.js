@@ -42,8 +42,11 @@ INDEX.forEach((item) => {
 const YEAR_FOOTER = new Date().getFullYear();
 
 document.querySelector("footer#footer").innerHTML = `
+  <p class="signature">
+    Made with ❤️ by
+    <a href="https://${DOMAIN}/" target="_blank" title="personal website">Diego Inácio</a>
+  </p>
   <p class="copyright">
     © ${YEAR_FOOTER} Diego Inácio. <br />
-    <a href="https://${DOMAIN}/" target="_blank" title="my personal website">${DOMAIN}</a>
   </p>
 `;

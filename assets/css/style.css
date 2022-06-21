@@ -10,8 +10,7 @@
 
 hr {
   border-top: 1px dashed lightgray;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 2em 0 2em 0;
 }
 
 /* ! Index page styling */
@@ -24,36 +23,16 @@ body.index .wrapper {
 
 body.index .wrapper h1 {
   font-family: "Amatic SC", cursive;
-  margin-top: 50px;
-  font-size: 64px;
+  margin-top: 0.5em;
+  font-size: 4em;
   font-weight: lighter;
-  margin-left: 10px;
 }
 
 body.index .wrapper h2 {
   font-family: "Titillium Web", sans-serif;
-  font-size: 74px;
+  font-size: 5em;
   font-weight: bolder;
   text-transform: uppercase;
-}
-
-body.index .wrapper .signature {
-  font-family: "Amatic SC", cursive;
-  font-size: 24px;
-  font-weight: lighter;
-  margin-left: 20px;
-}
-
-body.index .wrapper .signature a {
-  font-weight: bold;
-  text-decoration: none;
-  color: black;
-  -webkit-transition: color 0.5s;
-  transition: color 0.5s;
-}
-
-body.index .wrapper .signature a:hover {
-  color: red;
 }
 
 body.index .wrapper .items .item {
@@ -102,21 +81,31 @@ body.index .wrapper .items .item a:hover {
   backdrop-filter: blur(0px) saturate(1) contrast(1);
 }
 
-body.index .wrapper #footer .copyright {
+body.index .wrapper #footer {
   text-align: center;
-  margin-bottom: 20px;
 }
 
-body.index .wrapper #footer .copyright a {
-  color: red;
+body.index .wrapper #footer .signature {
+  font-family: "Amatic SC", cursive;
+  font-size: 1.5em;
+  font-weight: lighter;
+}
+
+body.index .wrapper #footer .signature a {
+  font-weight: bold;
   text-decoration: none;
-  font-weight: 600;
+  color: black;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
 }
 
-body.index .wrapper #footer .copyright a:hover {
-  color: black;
+body.index .wrapper #footer .signature a:hover {
+  color: red;
+}
+
+body.index .wrapper #footer .copyright {
+  font-size: 1em;
+  margin: 2em 0 2em 0;
 }
 
 @media only screen and (max-width: 800px) {
