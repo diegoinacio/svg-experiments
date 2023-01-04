@@ -21,6 +21,4 @@ If you feel that something here has helped you in somehow, please consider [supp
 |    005     | [PseuDoF](svg-experiment-005/)            | Interactive pseudo _Depth of Field_ effect         |
 |    006     | [CellAuto](svg-experiment-006/)           | Parameterized one-dimensional _Cellular Automaton_ |
 
----
-
 Made with ❤️ by [Diego Inácio](https://diegoinacio.github.io/)
