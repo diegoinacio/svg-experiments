@@ -6,6 +6,10 @@ A [gallery](https://diegoinacio.github.io/svg-experiments/) of experiments with 
 
 [![visit page](assets/icon/visit_page.svg)](https://diegoinacio.github.io/svg-experiments/)
 
+If you feel that something here has helped you in somehow, please consider [supporting](https://ko-fi.com/diegoinacio/) this project:
+
+[![support this project](assets/icon/support_this_project.svg)](https://ko-fi.com/diegoinacio/)
+
 ## List of experiments
 
 | Experiment | Name                                      | Description                                        |
@@ -16,3 +20,7 @@ A [gallery](https://diegoinacio.github.io/svg-experiments/) of experiments with 
 |    004     | [MPHS DSGN](svg-experiment-004/)          | Abstract _Memphis Design_ (80s feelings)           |
 |    005     | [PseuDoF](svg-experiment-005/)            | Interactive pseudo _Depth of Field_ effect         |
 |    006     | [CellAuto](svg-experiment-006/)           | Parameterized one-dimensional _Cellular Automaton_ |
+
+---
+
+Made with ❤️ by [Diego Inácio](https://diegoinacio.github.io/)
