@@ -58,97 +58,99 @@
       <!-- ! Description -->
       <div class="description light">
         <table>
-          <tr>
-            <td>🧮</td>
-            <td>
-              Select the <em class="command">rule</em> <br />
-              <select
-                name="rule"
-                id="rule"
-                onClick="stop_propagation()"
-                onChange="select_rule()"
-              >
-                <option value="18">rule 18</option>
-                <option value="75">rule 75</option>
-                <option value="106">rule 106</option>
-                <option value="126">rule 126</option>
-                <option value="165">rule 165</option>
-                <option value="225" selected="selected">rule 225</option>
-                <option value="0">custom rule</option>
-              </select>
-              <input
-                type="text"
-                id="c_rule"
-                name="c_rule"
-                onClick="stop_propagation()"
-                onChange="select_rule_custom()"
-                disabled
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>↔️</td>
-            <td>
-              Select <em class="command">neighborhood</em> <br />
-              <select
-                name="radius"
-                id="radius"
-                onClick="stop_propagation()"
-                onChange="select_radius()"
-                title="size 2r+1 | rules 2^2^s possibilities"
-              >
-                <option
-                  value="1"
-                  selected="selected"
-                  title="size 3 | rules 2^8 possibilities"
+          <tbody>
+            <tr>
+              <td>🧮</td>
+              <td>
+                Select the <em class="command">rule</em> <br />
+                <select
+                  name="rule"
+                  id="rule"
+                  onClick="stop_propagation()"
+                  onChange="select_rule()"
                 >
-                  radius 1
-                </option>
-                <option value="2" title="size 5 | 2^32 possibilities">
-                  radius 2
-                </option>
-                <option value="3" title="size 7 | 2^128 possibilities">
-                  radius 3
-                </option>
-                <option value="0">custom radius</option>
-              </select>
-              <input
-                type="text"
-                id="c_radius"
-                name="c_radius"
-                onClick="stop_propagation()"
-                onChange="select_radius_custom()"
-                disabled
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>↗️</td>
-            <td>
-              Select <em class="command">cell size</em> <br />
-              <select
-                name="size"
-                id="size"
-                onClick="stop_propagation()"
-                onChange="select_size()"
-              >
-                <option value="4">4</option>
-                <option value="8" selected="selected">8</option>
-                <option value="12">12</option>
-                <option value="16">16</option>
-                <option value="32">32</option>
-                <option value="0">custom size</option>
-              </select>
-              <input
-                type="text"
-                id="c_size"
-                name="c_size"
-                onClick="stop_propagation()"
-                onChange="select_size_custom()"
-                disabled
-              />
-            </td>
-          </tr>
+                  <option value="18">rule 18</option>
+                  <option value="75">rule 75</option>
+                  <option value="106">rule 106</option>
+                  <option value="126">rule 126</option>
+                  <option value="165">rule 165</option>
+                  <option value="225" selected="selected">rule 225</option>
+                  <option value="0">custom rule</option>
+                </select>
+                <input
+                  type="text"
+                  id="c_rule"
+                  name="c_rule"
+                  onClick="stop_propagation()"
+                  onChange="select_rule_custom()"
+                  disabled
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>↔️</td>
+              <td>
+                Select <em class="command">neighborhood</em> <br />
+                <select
+                  name="radius"
+                  id="radius"
+                  onClick="stop_propagation()"
+                  onChange="select_radius()"
+                  title="size 2r+1 | rules 2^2^s possibilities"
+                >
+                  <option
+                    value="1"
+                    selected="selected"
+                    title="size 3 | rules 2^8 possibilities"
+                  >
+                    radius 1
+                  </option>
+                  <option value="2" title="size 5 | 2^32 possibilities">
+                    radius 2
+                  </option>
+                  <option value="3" title="size 7 | 2^128 possibilities">
+                    radius 3
+                  </option>
+                  <option value="0">custom radius</option>
+                </select>
+                <input
+                  type="text"
+                  id="c_radius"
+                  name="c_radius"
+                  onClick="stop_propagation()"
+                  onChange="select_radius_custom()"
+                  disabled
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>↗️</td>
+              <td>
+                Select <em class="command">cell size</em> <br />
+                <select
+                  name="size"
+                  id="size"
+                  onClick="stop_propagation()"
+                  onChange="select_size()"
+                >
+                  <option value="4">4</option>
+                  <option value="8" selected="selected">8</option>
+                  <option value="12">12</option>
+                  <option value="16">16</option>
+                  <option value="32">32</option>
+                  <option value="0">custom size</option>
+                </select>
+                <input
+                  type="text"
+                  id="c_size"
+                  name="c_size"
+                  onClick="stop_propagation()"
+                  onChange="select_size_custom()"
+                  disabled
+                />
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
 
