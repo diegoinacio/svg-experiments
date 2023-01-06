@@ -15,26 +15,23 @@ hr {
 
 /* ! Index page styling */
 body.index .wrapper {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   width: 800px;
   margin: auto;
   background-color: white;
 }
-
 body.index .wrapper h1 {
   font-family: "Amatic SC", cursive;
   margin-top: 0.5em;
   font-size: 4em;
   font-weight: lighter;
 }
-
 body.index .wrapper h2 {
   font-family: "Titillium Web", sans-serif;
   font-size: 5em;
   font-weight: bolder;
   text-transform: uppercase;
 }
-
 body.index .wrapper .items .item {
   /* * background image */
   background-image: var(--bgi);
@@ -42,20 +39,13 @@ body.index .wrapper .items .item {
   background-attachment: local;
   background-position: center;
 }
-
 body.index .wrapper .items .item a {
   transition: color 1s, -webkit-text-stroke 0.75s, backdrop-filter 0.5s;
   /* * formatting */
   padding: 10% 0 10% 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   /* * colors and text styling */
   text-decoration: none;
   color: transparent;
@@ -71,7 +61,6 @@ body.index .wrapper .items .item a {
   background-attachment: local;
   background-position: center;
 }
-
 body.index .wrapper .items .item a:hover {
   /* * colors and text styling */
   color: var(--color);
@@ -80,29 +69,23 @@ body.index .wrapper .items .item a:hover {
   -webkit-backdrop-filter: blur(0px) saturate(1) contrast(1);
   backdrop-filter: blur(0px) saturate(1) contrast(1);
 }
-
 body.index .wrapper #footer {
   text-align: center;
 }
-
 body.index .wrapper #footer .signature {
   font-family: "Amatic SC", cursive;
   font-size: 1.5em;
   font-weight: lighter;
 }
-
 body.index .wrapper #footer .signature a {
   font-weight: bold;
   text-decoration: none;
   color: black;
-  -webkit-transition: color 0.5s;
   transition: color 0.5s;
 }
-
 body.index .wrapper #footer .signature a:hover {
   color: red;
 }
-
 body.index .wrapper #footer .copyright {
   font-size: 1em;
   margin: 2em 0 2em 0;
@@ -129,11 +112,9 @@ body.index .wrapper #footer .copyright {
     margin-left: 2vw;
   }
 }
-
 @media (hover: none) and (pointer: coarse) {
   /* ! Detect touch screen devices */
   body.index .wrapper .items .item a {
-    -webkit-transition: none;
     transition: none;
     /* * colors and text styling */
     color: var(--color);
@@ -143,19 +124,15 @@ body.index .wrapper #footer .copyright {
     backdrop-filter: blur(0px) saturate(1) contrast(1);
   }
 }
-
 /* ! Experiment pages styling */
 body.experiment {
   overflow: hidden;
 }
-
 body.experiment .wrapper {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
 }
-
 body.experiment .wrapper .description {
-  -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
   opacity: 0;
   border: 1px dashed gray;
@@ -164,43 +141,33 @@ body.experiment .wrapper .description {
   position: absolute;
   bottom: 25px;
   right: 5px;
+  -webkit-backdrop-filter: blur(5px) contrast(1.5);
+  backdrop-filter: blur(5px) contrast(1.5);
 }
-
 body.experiment .wrapper .description[visible] {
   opacity: 1;
   bottom: 5px;
 }
-
 body.experiment .wrapper .description a {
   color: red;
   text-decoration: none;
   font-weight: 900;
-  -webkit-transition: color 0.5s;
   transition: color 0.5s;
 }
-
-body.experiment .wrapper .description a:hover {
-  color: black;
-}
-
 body.experiment .wrapper .description b {
   font-weight: 900;
 }
-
 body.experiment .wrapper .description table {
   margin-top: 1.5em;
 }
-
 body.experiment .wrapper .description table tr td:first-child {
   text-align: center;
   vertical-align: text-top;
   padding-right: 0.25em;
 }
-
 body.experiment .wrapper .description .command {
   font-weight: 500;
 }
-
 body.experiment .wrapper .description .top-tab {
   width: 100%;
   position: absolute;
@@ -208,9 +175,7 @@ body.experiment .wrapper .description .top-tab {
   right: 0;
   border-bottom: 1px dashed gray;
 }
-
 body.experiment .wrapper .description .top-tab .close {
-  -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
   background-color: gray;
   float: right;
@@ -219,84 +184,68 @@ body.experiment .wrapper .description .top-tab .close {
   text-decoration: none;
   font-weight: lighter;
 }
-
 body.experiment .wrapper .description .top-tab .close::before {
   content: "x";
 }
-
 body.experiment .wrapper .description.light {
   color: black;
   background-color: rgba(255, 255, 255, 0.7);
 }
-
+body.experiment .wrapper .description.light a:hover {
+  color: black;
+}
 body.experiment .wrapper .description.light .close {
   color: white;
 }
-
 body.experiment .wrapper .description.light .close:hover {
   background-color: black;
 }
-
 body.experiment .wrapper .description.dark {
   color: white;
   background-color: rgba(0, 0, 0, 0.7);
 }
-
+body.experiment .wrapper .description.dark a:hover {
+  color: white;
+}
 body.experiment .wrapper .description.dark .close {
   color: black;
 }
-
 body.experiment .wrapper .description.dark .close:hover {
   background-color: white;
 }
 
 /* ! Return Corner */
 @-webkit-keyframes arrow-shake-horizontal {
-  0%,
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
+  0%, 100% {
+    transform: translateX(0);
   }
-  20%,
-  60% {
-    -webkit-transform: translateX(10px);
-            transform: translateX(10px);
+  20%, 60% {
+    transform: translateX(10px);
   }
-  40%,
-  80% {
-    -webkit-transform: translateX(-10px);
-            transform: translateX(-10px);
+  40%, 80% {
+    transform: translateX(-10px);
   }
 }
 @keyframes arrow-shake-horizontal {
-  0%,
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
+  0%, 100% {
+    transform: translateX(0);
   }
-  20%,
-  60% {
-    -webkit-transform: translateX(10px);
-            transform: translateX(10px);
+  20%, 60% {
+    transform: translateX(10px);
   }
-  40%,
-  80% {
-    -webkit-transform: translateX(-10px);
-            transform: translateX(-10px);
+  40%, 80% {
+    transform: translateX(-10px);
   }
 }
-
 .return-corner {
   position: fixed;
   left: 0.5em;
   top: 0.5em;
 }
-
 .return-corner svg {
   width: 3rem;
   height: 3rem;
 }
-
 .return-corner svg a circle,
 .return-corner svg a polyline {
   fill: black;
@@ -305,25 +254,20 @@ body.experiment .wrapper .description.dark .close:hover {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-
 .return-corner svg a:hover .arrow {
   -webkit-animation: arrow-shake-horizontal 0.5s;
           animation: arrow-shake-horizontal 0.5s;
 }
-
 .return-corner.light svg a {
   stroke: white;
 }
-
 .return-corner.light svg a circle {
   fill: gray;
   fill-opacity: 0.5;
 }
-
 .return-corner.dark svg a {
   stroke: black;
 }
-
 .return-corner.dark svg a circle {
   fill: gray;
   fill-opacity: 0.5;
@@ -331,51 +275,36 @@ body.experiment .wrapper .description.dark .close:hover {
 
 /* ! Render Corner */
 @-webkit-keyframes arrow-shake-vertical {
-  0%,
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+  0%, 100% {
+    transform: translateY(0);
   }
-  20%,
-  60% {
-    -webkit-transform: translateY(10px);
-            transform: translateY(10px);
+  20%, 60% {
+    transform: translateY(10px);
   }
-  40%,
-  80% {
-    -webkit-transform: translateY(-10px);
-            transform: translateY(-10px);
+  40%, 80% {
+    transform: translateY(-10px);
   }
 }
 @keyframes arrow-shake-vertical {
-  0%,
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+  0%, 100% {
+    transform: translateY(0);
   }
-  20%,
-  60% {
-    -webkit-transform: translateY(10px);
-            transform: translateY(10px);
+  20%, 60% {
+    transform: translateY(10px);
   }
-  40%,
-  80% {
-    -webkit-transform: translateY(-10px);
-            transform: translateY(-10px);
+  40%, 80% {
+    transform: translateY(-10px);
   }
 }
-
 .render-corner {
   position: fixed;
   left: 0.5em;
   bottom: 0.5em;
 }
-
 .render-corner svg {
   width: 3rem;
   height: 3rem;
 }
-
 .render-corner svg a circle,
 .render-corner svg a polyline {
   fill: black;
@@ -384,25 +313,20 @@ body.experiment .wrapper .description.dark .close:hover {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-
 .render-corner svg a:hover .arrow {
   -webkit-animation: arrow-shake-vertical 0.5s;
           animation: arrow-shake-vertical 0.5s;
 }
-
 .render-corner.light svg a {
   stroke: white;
 }
-
 .render-corner.light svg a circle {
   fill: gray;
   fill-opacity: 0.5;
 }
-
 .render-corner.dark svg a {
   stroke: black;
 }
-
 .render-corner.dark svg a circle {
   fill: gray;
   fill-opacity: 0.5;
@@ -410,87 +334,99 @@ body.experiment .wrapper .description.dark .close:hover {
 
 /* ! GitHub Corner */
 @-webkit-keyframes octocat-wave {
-  0%,
-  100% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+  0%, 100% {
+    transform: rotate(0);
   }
-  20%,
-  60% {
-    -webkit-transform: rotate(20deg);
-            transform: rotate(20deg);
+  20%, 60% {
+    transform: rotate(20deg);
   }
-  40%,
-  80% {
-    -webkit-transform: rotate(-10deg);
-            transform: rotate(-10deg);
+  40%, 80% {
+    transform: rotate(-10deg);
   }
 }
 @keyframes octocat-wave {
-  0%,
-  100% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+  0%, 100% {
+    transform: rotate(0);
   }
-  20%,
-  60% {
-    -webkit-transform: rotate(20deg);
-            transform: rotate(20deg);
+  20%, 60% {
+    transform: rotate(20deg);
   }
-  40%,
-  80% {
-    -webkit-transform: rotate(-10deg);
-            transform: rotate(-10deg);
+  40%, 80% {
+    transform: rotate(-10deg);
   }
 }
-
 .github-corner {
   position: fixed;
   right: 0.5em;
   top: 0.5em;
 }
-
 .github-corner svg {
   width: 3rem;
   height: 3rem;
 }
-
 .github-corner svg a circle {
   fill: black;
   fill-opacity: 0;
   stroke-width: 15px;
 }
-
 .github-corner svg a:hover .octo-arm {
   -webkit-animation: octocat-wave 0.5s;
           animation: octocat-wave 0.5s;
 }
-
 .github-corner.index svg a circle {
   stroke: black;
 }
-
 .github-corner.index svg a path {
   fill: black;
 }
-
 .github-corner.light svg a circle {
   stroke: white;
   fill: gray;
   fill-opacity: 0.5;
 }
-
 .github-corner.light svg a path {
   fill: white;
 }
-
 .github-corner.dark svg a circle {
   stroke: black;
   fill: gray;
   fill-opacity: 0.5;
 }
-
 .github-corner.dark svg a path {
   fill: black;
 }
-/*# sourceMappingURL=style.css.map */
+
+/* Ko-fi */
+#kofi-button-container {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  right: 0.5em;
+  bottom: 0.7em;
+  z-index: 999;
+}
+#kofi-button-container .kofi-button {
+  transition: 0.5s;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+#kofi-button-container .kofi-button:hover {
+  background-color: rgb(0, 0, 0) !important;
+}
+#kofi-button-container:hover > #close {
+  opacity: 1;
+}
+#kofi-button-container #close {
+  transition: 0.5s;
+  color: black;
+  opacity: 0;
+  position: absolute;
+  top: -1.5em;
+  right: 0.5em;
+  text-align: right !important;
+}
+#kofi-button-container #close:hover {
+  cursor: pointer;
+  font-weight: bold !important;
+}/*# sourceMappingURL=style.css.map */

@@ -97,11 +97,16 @@ window.addEventListener("DOMContentLoaded", () => {
     let tbody = description.querySelector("table tbody");
 
     if (!window.mobileAndTabletCheck()) {
-      // * Include full screen messa for non-mobile
+      // * Include full screen message for non-mobile
       let tr = document.createElement("tr");
       tr.innerHTML = `<td>🖥️</td> <td><em class="command">Press <b>F11</b></em> to toggle to <em>full screen</em>.</td>`;
       tbody.appendChild(tr);
     }
+
+    // * Include support message
+    let tr = document.createElement("tr");
+    tr.innerHTML = `<td>❤️</td> <td><em class="command">Support</em> this project <a href="https://ko-fi.com/diegoinacio" target="_blank">here</a>.</td>`;
+    tbody.appendChild(tr);
 
     let div = document.createElement("div");
     div.className = "top-tab";
